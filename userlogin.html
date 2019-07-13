@@ -17,23 +17,28 @@
 
 <body>
     <h1>Car Med App</h1>
-    
-<div class="container" id="userloginform">
-    <form>
+
+    <div class="container" id="userloginform">
+        <form>
             <h1>Login Here</h1>
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+<br>
+    <div class=container onclick="showForm()" id="needAccount">
+        <button>Register Here</button>
+    </div>
 
     <div class="container" id="usersignupform">
         <form>
@@ -50,10 +55,10 @@
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
             <div class="form-group">
-                <label for="inputphonenumber">Phone Number</label>
-                <input type="text" class="form-control" placeholder="Phone Number" id="inputphonenumber">
+                <label for="inputPhone">Phone Number</label>
+                <input type="text" class="form-control" placeholder="Phone Number" id="inputPhone">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button onclick="showForm()" type="submit" class="btn btn-primary" id="create-user">Submit</button>
         </form>
     </div>
 
