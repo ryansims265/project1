@@ -16,53 +16,42 @@
 </head>
 
 <body>
-    <h1>Car Med App</h1>
+    <div class="container justify-content-center">
+        <h1>Car Med App</h1>
+    </div>
 
-    <div class="container" id="userloginform">
+    <div class="container">
         <form>
-            <h1>Login Here</h1>
-            <div class="form-group">
-                <label for="inputEmail">Email address</label>
-                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                    else.</small>
+            <div class="form-row">
+
+                <div class="col">
+                    <!-- enter mileage text input -->
+                    <input type="text" class="form-control" placeholder="Enter Vehicle Mileage" id="mileageInput">
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+
+            <div class="form-row">
+
+                <div class="col mt-2">
+                    <input type="text" class="form-control" placeholder="First name">
+                </div>
+
+                <div class="col mt-2">
+                    <input type="text" class="form-control" placeholder="Last name">
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </div>
-<br>
-    <div class=container onclick="showForm()" id="needAccount">
-        <button>Register Here</button>
-    </div>
 
-    <div class="container" id="usersignupform">
-        <form>
-            <h1>Create an Account</h1>
-            <div class="form-group">
-                <label for="inputEmail">Email address</label>
-                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                    else.</small>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label for="inputPhone">Phone Number</label>
-                <input type="text" class="form-control" placeholder="Phone Number" id="inputPhone">
-            </div>
-            <button onclick="showForm()" type="submit" class="btn btn-primary" id="create-user">Submit</button>
-        </form>
+        <!-- opens up index.html -->
+        <button type="button" class="btn btn-danger" id="calculateButton">See Status</button>
     </div>
 
 
+    <footer style="background-color: black; color: white;">copyright</footer>
     <script type="text/javascript" src="assets/js/main.js"> </script>
 </body>
 
