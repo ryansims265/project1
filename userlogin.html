@@ -16,6 +16,26 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Car Med</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"> Vehicle Maintenance</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="userlogin.html">Vehicle Status</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+=======
 
     <div class="container justify-content-center">
         <h1>Car Med App</h1>
@@ -44,6 +64,7 @@
         <button>Register Here</button>
 
     </div>
+>>>>>>> 78c47f6dca7c2ac58c3935c3317f136c26f950e8
 
     <div class="container">
         <form>
@@ -55,18 +76,18 @@
                 </div>
 
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Last name">
+                    <input type="text" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
                 </div>
             </div>
 
             <div class="form-row">
 
                 <div class="col mt-2">
-                    <input type="text" class="form-control" placeholder="First name">
+                    <input type="text" class="form-control" placeholder="Enter Vehicle Make">
                 </div>
 
                 <div class="col mt-2">
-                    <input type="text" class="form-control" placeholder="Last name">
+                    <input type="text" class="form-control" placeholder="Enter Vehicle Model">
                 </div>
             </div>
             <div class="row">
@@ -94,7 +115,7 @@
         </form>
 
         <!-- opens up index.html -->
-        <button type="button" class="btn btn-danger" id="calculateButton">See Status</button>
+        <button type="button" class="btn btn-danger display-none" id="calculateButton"><a href = "index.html">See Maintenance</a></button>
     </div>
 
 
