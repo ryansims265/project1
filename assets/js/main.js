@@ -58,3 +58,18 @@ function showForm() {
 }
 //Create the login function when a user already has an account that then leads to the dashboard
 
+function youtubeAPI(artist) {
+
+    // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
+    var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codingbootcamp";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+
+      // Printing the entire object to console
+      console.log(response);
+
+      
+    });
+  }
