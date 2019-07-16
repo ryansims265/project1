@@ -5,10 +5,12 @@
 .statusBoxHeader{
     background-color: black;
     color: white;
+    text-align: center;
 }
 
 .statusBox{
     background-color: darkred;
+    text-align: center;
 }
 body{
     background-color: darkgray;
@@ -16,4 +18,5 @@ body{
 footer{
     background-color: black;
     color: white;
+    text-align: center;
 }
