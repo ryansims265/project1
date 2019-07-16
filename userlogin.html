@@ -6,10 +6,8 @@
     <title>Car Med</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/style/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/style/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -20,8 +18,7 @@
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Car Med</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -37,42 +34,49 @@
         </div>
     </nav>
 
+    <div id="content-wrap">
+        <div class="container">
+            <form>
+                <div class="form-row">
+                    <div class="col">
+                        <!-- enter mileage text input -->
+                        <input type="text" class="form-control" placeholder="Enter Vehicle Mileage" id="mileageInput">
+                    </div>
 
-
-    <div class="container">
-        <form>
-            <div class="form-row">
-                <div class="col">
-                    <!-- enter mileage text input -->
-                    <input type="text" class="form-control" placeholder="Enter Vehicle Mileage" id="mileageInput">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
+                    </div>
                 </div>
 
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
+
+                <div class="form-row">
+
+                    <div class="col mt-2">
+                        <input type="text" class="form-control" placeholder="Enter Vehicle Make">
+                    </div>
+
+                    <div class="col mt-2">
+                        <input type="text" class="form-control" placeholder="Enter Vehicle Model">
+                    </div>
                 </div>
-            </div>
+                <button type="button" class="btn btn-danger display-none" id="calculateButton"><a href="index.html">See
+                    Maintenance</a></button>
+            </form>
 
-
-            <div class="form-row">
-
-                <div class="col mt-2">
-                    <input type="text" class="form-control" placeholder="Enter Vehicle Make">
-                </div>
-
-                <div class="col mt-2">
-                    <input type="text" class="form-control" placeholder="Enter Vehicle Model">
-                </div>
-            </div>
-        </form>
 
         <!-- opens up index.html -->
         <button type="button" class="btn btn-dark display-none" id="calculateButton"><a href="index.html">See
                 Maintenance</a></button>
+
+            <!-- opens up index.html -->
+
+
+        </div>
+
     </div>
-
-
-    <footer style="background-color: black; color: white;">copyright</footer>
-    <script type="text/javascript" src="assets/js/main.js"> </script>
+    <footer id="footer" style="background-color: black; color: white;">copyright</footer>
+    <script type="text/javascript" src="assets/js/main.js">
+    </script>
 </body>
 
 </html>
