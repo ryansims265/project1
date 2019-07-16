@@ -1,4 +1,5 @@
-
+var make = $("#make").val()
+var model = $("#model").val()
 
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=oil_change&key=AIzaSyAgA2B82VMDKMe0skNBKgiM0fIOTqBZPG0"
 
