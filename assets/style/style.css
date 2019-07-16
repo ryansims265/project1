@@ -1,19 +1,36 @@
-#usersignupform{
-    display:none;
+#usersignupform {
+    display: none;
 }
 
-.statusBoxHeader{
+.statusBoxHeader {
     background-color: black;
     color: white;
 }
 
-.statusBox{
+.statusBox {
     background-color: darkred;
 }
-body{
+
+body {
     background-color: darkgray;
+    position: relative;
+    min-height: 100vh;
 }
-footer{
+
+footer {
     background-color: black;
     color: white;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+    /* Footer height */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    /* Footer height */
 }
