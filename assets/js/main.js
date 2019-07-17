@@ -71,3 +71,50 @@ var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxRes
       document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
 
     });
+
+
+
+    var proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var mapsurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.786,-84.379&radius=5000&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs"; 
+    
+    $.ajax({
+      url: proxyurl + mapsurl,
+      method: "GET"
+    }).then(function(response) {
+      // Printing the entire object to console
+      console.log(response.results[2]);
+      var address1 = response.results[2].vicinity;
+      var name1 = response.results[2].name;
+      var rating1 = response.results[2].rating;
+    
+      $("#serviceName1").html(name1);
+      $("#serviceAddress1").html(address1);
+      $("#serviceRating1").html(rating1);
+    
+      var address2 = response.results[3].vicinity;
+      var name2 = response.results[3].name;
+      var rating2 = response.results[3].rating;
+    
+      $("#serviceName2").html(name2);
+      $("#serviceAddress2").html(address2);
+      $("#serviceRating2").html(rating2);
+
+      var address3 = response.results[1].vicinity;
+      var name3 = response.results[1].name;
+      var rating3 = response.results[1].rating;
+    
+      $("#serviceName3").html(name3);
+      $("#serviceAddress3").html(address3);
+      $("#serviceRating3").html(rating3);
+    });
+
+
+    function initMap() {
+        // The location of Uluru
+        var uluru = {lat: 33.786, lng: -84.379};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+      }
