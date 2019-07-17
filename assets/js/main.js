@@ -71,11 +71,6 @@ var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxRes
       document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
 
     });
-<<<<<<< HEAD
-  }
-=======
-
-
 
     var proxyurl = "https://cors-anywhere.herokuapp.com/";
     var mapsurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.786,-84.379&radius=5000&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs"; 
@@ -121,4 +116,3 @@ var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxRes
         // The marker, positioned at Uluru
         var marker = new google.maps.Marker({position: uluru, map: map});
       }
->>>>>>> 33e7dfc51e08d388cf9560186d8c031b975c6fc6
