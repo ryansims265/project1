@@ -58,18 +58,67 @@ function showForm() {
 }
 //Create the login function when a user already has an account that then leads to the dashboard
 
-function youtubeAPI(artist) {
+var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=oil_change&key=AIzaSyAgA2B82VMDKMe0skNBKgiM0fIOTqBZPG0"
 
-    // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
-    var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codingbootcamp";
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
 
       // Printing the entire object to console
-      console.log(response);
+      console.log(response.items[1].id.videoId);
+      var videoid = response.items[1].id.videoId;
+      document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
 
-      
     });
+<<<<<<< HEAD
   }
+=======
+
+
+
+    var proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var mapsurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.786,-84.379&radius=5000&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs"; 
+    
+    $.ajax({
+      url: proxyurl + mapsurl,
+      method: "GET"
+    }).then(function(response) {
+      // Printing the entire object to console
+      console.log(response.results[2]);
+      var address1 = response.results[2].vicinity;
+      var name1 = response.results[2].name;
+      var rating1 = response.results[2].rating;
+    
+      $("#serviceName1").html(name1);
+      $("#serviceAddress1").html(address1);
+      $("#serviceRating1").html(rating1);
+    
+      var address2 = response.results[3].vicinity;
+      var name2 = response.results[3].name;
+      var rating2 = response.results[3].rating;
+    
+      $("#serviceName2").html(name2);
+      $("#serviceAddress2").html(address2);
+      $("#serviceRating2").html(rating2);
+
+      var address3 = response.results[1].vicinity;
+      var name3 = response.results[1].name;
+      var rating3 = response.results[1].rating;
+    
+      $("#serviceName3").html(name3);
+      $("#serviceAddress3").html(address3);
+      $("#serviceRating3").html(rating3);
+    });
+
+
+    function initMap() {
+        // The location of Uluru
+        var uluru = {lat: 33.786, lng: -84.379};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+      }
+>>>>>>> 33e7dfc51e08d388cf9560186d8c031b975c6fc6

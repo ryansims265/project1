@@ -12,6 +12,10 @@
 .statusBox {
     background-color: darkred;
     text-align: center;
+    border-style: solid;
+    border-color: darkgray;
+    color: white;
+
 }
 
 body {
@@ -23,7 +27,6 @@ body {
 footer {
     background-color: black;
     color: white;
-
     text-align: center;
 
 }

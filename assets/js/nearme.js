@@ -10,24 +10,29 @@ function initMap() {
   }
 
 
-// var queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=15&type=car_repair&keyword=oilchange&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs";
+var proxyurl = "https://cors-anywhere.herokuapp.com/";
+var queryurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.786,-84.379&radius=5000&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs"; 
 
-//     $.ajax({
-//       url: queryURL,
-//       method: "GET"
-//     }).then(function(response) {
+$.ajax({
+  url: proxyurl + queryurl,
+  method: "GET"
+}).then(function(response) {
+  // Printing the entire object to console
+  console.log(response.results[1]);
+  var address = response.results[1].vicinity;
+  var name = response.results[1].name;
+  var rating = response.results[1].rating;
 
-//       // Printing the entire object to console
-//       console.log(response);
-      
-//     });
+  $("#serviceName").html(name);
+  $("#serviceAddress").html(address);
+  $("#serviceRating").html(rating);
 
+ 
+});
+// fetch(proxyurl + url) 
+// .then(response => response.text())
+// .then(contents => console.log(JSON.parse(contents)))
+// .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.786,-84.379&radius=200&type=car_repair&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs"; 
-fetch(proxyurl + url) 
-.then(response => response.text())
-.then(contents => console.log(contents))
-.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
 
