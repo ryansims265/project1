@@ -32,7 +32,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Car Med</a>
+        <a class="navbar-brand" href="#">CarMed</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,252 +46,258 @@
                 <li class="nav-item">
                     <a class="nav-link" href="userlogin.html">Vehicle Status</a>
                 </li>-->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vehicle-info"
                         id="resetInfo">
                         Reset Vehicle Info
                     </button>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
 
     <div class="container">
 
-        <div class="row">
+        <div class="col mt-5">
+            <div class="container">
+                <div class="container w-25 oilChange">
+                    <div class="row mt-2">
 
-            <div class="col">
-                <div class="container statusBox">
-                  
-                    <div id="content-wrap">
-                        <div class="container">
-
-                            <div class="row">
-
-                                <div class="col">
+                        <!-- <div class="col">
                                     <div class="container statusBox">
-                                        <h6 class="statusBoxHeader">Oil Change</h6>
+                                        <h6 class="statusBoxHeader p-1">Oil Change</h6>
                                         <p id="mileageOutput">1234</p>
 
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="col">
+                        <!-- <div class="col">
                                     <div class="container statusBox">
-                                        <h6 class="statusBoxHeader">Oil Change</h6>
+                                        <h6 class="statusBoxHeader p-1">Oil Change</h6>
                                         <p id="mileageOutput">1234</p>
 
                                     </div>
-                                </div>
+                                </div> -->
 
 
-                                <div class="col">
-                                    <div class="container statusBox">
-                                        <h6 class="statusBoxHeader">Oil Change</h6>
-                                        <p id="mileageOutput">1234</p>
-
-                                    </div>
-                                </div>
-
+                        <div class="col">
+                            <div class="container statusBox">
+                                <h6 class="statusBoxHeader p-1">Oil Change</h6>
+                                <p id="mileageOutput">1234</p>
 
                             </div>
                         </div>
 
-                        <div class="container">
-                            <div class="row">
-                                <h4> Your car needs a: <span id="requiredMaintenance">_______</span>. You can do
-                                    it yourself by clicking the DIY button. This will give access to relevant
-                                    Youtube videos, and Google links. </br> You may also find a nearby mechanic
-                                    by clicking
-                                    the Locate Services Button which gives access to Google Maps and top rated
-                                    mechanics near you! </h4>
-                            </div>
-                        </div>
 
-                        <div class="container">
-
-                            <div class="row">
-                                <div class="col">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModal">
-                                        DIY(Do It Yourself)
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">DIY(Do it
-                                                        Yourself)</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h3>Youtube Links</h3>
-                                                    <ul class="list-group">
-                                                        <li class="list-group-item" id="youTubeLinkOne">Youtube
-                                                            Link 1</li>
-                                                        <li class="list-group-item" id="youTubeLinkTwo">Youtube
-                                                            Link 2</li>
-                                                        <li class="list-group-item" id="googleLinkOne">Google
-                                                            Link 1</li>
-                                                        <li class="list-group-item" id="googleLinkTwo">Google
-                                                            Link 2</li>
-                                                    </ul>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Thank you come
-                                                        again</button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
-                                <div class="col">
-
-
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModalTwo">
-                                        Location Services
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalTwo" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabelTwo">Location
-                                                        Services</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h3>Google Maps</h3>
-                                                    <table class="table table-dark">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">Distance(m)</th>
-                                                                <th scope="col">Name</th>
-                                                                <th scope="col">Address</th>
-                                                                <th scope="col">Rating</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">20.5</th>
-                                                                <td id="serviceName">Jiffy Lube</td>
-                                                                <td id="serviceAddress">500 Main St</td>
-                                                                <td id="serviceRating">3.3 stars</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Jacob</td>
-                                                                <td>Thornton</td>
-                                                                <td>@fat</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Larry</td>
-                                                                <td>the Bird</td>
-                                                                <td>@twitter</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Thank You Come
-                                                        Again</button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <footer id="footer">copyright stuff</footer>
-                <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <!-- enter mileage text input -->
-                                            <input type="text" class="form-control" placeholder="Enter Vehicle Mileage"
-                                                id="mileageInput">
-                                        </div>
-
-                                        <div class="col">
-                                            <input type="text" class="form-control" placeholder="Enter Last Oil Change"
-                                                id="lastOilChange">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-
-                                        <div class="col mt-2">
-                                            <input type="text" class="form-control" placeholder="Enter Vehicle Make">
-                                        </div>
-
-                                        <div class="col mt-2">
-                                            <input type="text" class="form-control" placeholder="Enter Vehicle Model">
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal"
-                                    id="setVehicleInput">See
-                                    Maintenance</button>
-                            </div>
-                            </form>
-
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <script type="text/javascript">
-                $("#setVehicleInput").on("click", function () {
-                    localStorage.setItem('vehicle-details', true);
-                    var userData = localStorage.getItem('vehicle-details');
-                });
-                $("#resetInfo").on("click", function () {
-                    localStorage.clear();
-                });
-            </script>
-            <script type="text/javascript" src="assets/js/main.js">
-            </script>
+            <div class="container mt-5">
+                <div class="row">
+                    <h4> Your car needs an oil change. You can do
+                        it yourself by clicking the DIY button. This will give access to relevant
+                        Youtube videos, and Google links. </br> You may also find a nearby mechanic
+                        by clicking
+                        the Locate Services Button which gives access to Google Maps and top rated
+                        mechanics near you! </h4>
+                </div>
+            </div>
+
+            <div class="container mt-5">
+
+                <div class="row">
+                    <div class="col">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                            DIY(Do It Yourself)
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">DIY(Do it
+                                            Yourself)</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <h3>Youtube Links</h3>
+                                        <ul class="list-group">
+                                            <li class="list-group-item" id="youTubeLinkOne">Youtube
+                                                Link 1</li>
+                                            <li class="list-group-item" id="youTubeLinkTwo">Youtube
+                                                Link 2</li>
+                                            <li class="list-group-item" id="googleLinkOne">Google
+                                                Link 1</li>
+                                            <li class="list-group-item" id="googleLinkTwo">Google
+                                                Link 2</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
+                                            you come
+                                            again
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#vehicle-info"
+                            id="resetInfo">
+                            Reset Vehicle Info
+                        </button>
+                    </div>
+
+
+
+
+
+                    <div class="col">
+
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-secondary" data-toggle="modal"
+                            data-target="#exampleModalTwo">
+                            Location Services
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalTwo" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabelTwo">Location
+                                            Services</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>Google Maps</h3>
+                                        <table class="table table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Distance(m)</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">Rating</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">20.5</th>
+                                                    <td id="serviceName">Jiffy Lube</td>
+                                                    <td id="serviceAddress">500 Main St</td>
+                                                    <td id="serviceRating">3.3 stars</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>@fat</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Larry</td>
+                                                    <td>the Bird</td>
+                                                    <td>@twitter</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thank
+                                            You Come
+                                            Again</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- enter mileage text input -->
+                                <input type="text" class="form-control" placeholder="Enter Vehicle Mileage"
+                                    id="mileageInput">
+                            </div>
+
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Enter Last Oil Change"
+                                    id="lastOilChange">
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="col mt-2">
+                                <input type="text" class="form-control" placeholder="Enter Vehicle Make">
+                            </div>
+
+                            <div class="col mt-2">
+                                <input type="text" class="form-control" placeholder="Enter Vehicle Model">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">See
+                        Maintenance</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+    <footer id="footer">copyright stuff</footer>
+
+    <script type="text/javascript">
+        $("#setVehicleInput").on("click", function () {
+            localStorage.setItem('vehicle-details', true);
+            var userData = localStorage.getItem('vehicle-details');
+        });
+        $("#resetInfo").on("click", function () {
+            localStorage.clear();
+        });
+    </script>
+    <script type="text/javascript" src="assets/js/main.js">
+    </script>
 </body>
 
 </html>
