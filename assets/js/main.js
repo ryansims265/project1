@@ -109,12 +109,4 @@ var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxRes
     });
 
 
-    function initMap() {
-        // The location of Uluru
-        var uluru = {lat: 33.786, lng: -84.379};
-        // The map, centered at Uluru
-        var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 4, center: uluru});
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: uluru, map: map});
-      }
+    
