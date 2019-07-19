@@ -6,15 +6,17 @@
     background-color: black;
     color: white;
     text-align: center;
+    border: black 1px solid;
+    border-radius: 8px;
 }
 
 .statusBox {
     background-color: darkred;
     text-align: center;
-    border-style: solid;
-    border-color: darkgray;
+    border: solid 5px darkslategray;
+    border-radius: 8px;
     color: white;
-
+    animation: 1s ease-out 0s 1 slideInFromRight;
 }
 
 body {
@@ -27,7 +29,6 @@ footer {
     background-color: black;
     color: white;
     text-align: center;
-
 }
 
 #content-wrap {
@@ -41,5 +42,53 @@ footer {
     width: 100%;
     height: 2.5rem;
     /* Footer height */
+}
 
+.headerDivider {
+    border-left: 1px solid #0088ff;
+    border-right: 1px solid #003764;
+    height: 50px;
+}
+
+.btn {
+    margin: 10px;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.button1 {
+    border: 0.1em solid #FFFFFF;
+    font-family: 'poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(0, 66, 110, 0.979);
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+input.button1:hover {
+    color: rgba(8, 139, 226, 0.979);
+    background-color: #FFFFFF;
+}
+
+.navbar-brand {
+    animation: 1s ease-out 0s 1 slideInFromRight;
 }
