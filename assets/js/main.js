@@ -1,3 +1,28 @@
+var make = "";
+var model = "";
+var mileage = "";
+var lastChange = "";
+
+//First we need to create the user registration database 
+var firebaseConfig = {
+    apiKey: "AIzaSyCBrNS7nMK1bZWb-xwKrLlh9ESVNQqhzls",
+    authDomain: "car-med.firebaseapp.com",
+    databaseURL: "https://car-med.firebaseio.com",
+    projectId: "car-med",
+    storageBucket: "car-med.appspot.com",
+    messagingSenderId: "1055506661486",
+    appId: "1:1055506661486:web:78899fa40aad7d63"
+  };
+  firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+
+database.ref().set({
+    make: make,
+    model: model,
+    lastChange: lastChange,
+    mileage: mileage,
+});
+
 $(window).on('load', function() {
     var userData = localStorage.getItem('vehicle-details');
     if (userData == null) {
@@ -13,19 +38,6 @@ $("#setVehicleInput").on("click", function () {
 $("#resetInfo").on("click", function () {
     localStorage.clear();
 });
-
-//First we need to create the user registration database 
-var firebaseConfig = {
-    apiKey: "AIzaSyCBrNS7nMK1bZWb-xwKrLlh9ESVNQqhzls",
-    authDomain: "car-med.firebaseapp.com",
-    databaseURL: "https://car-med.firebaseio.com",
-    projectId: "car-med",
-    storageBucket: "",
-    messagingSenderId: "1055506661486",
-    appId: "1:1055506661486:web:78899fa40aad7d63"
-};
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
 
 // $("#create-user").on("click", function (event) {
 //     event.preventDefault();
@@ -71,12 +83,19 @@ function showForm() {
 }
 //YOUTUBE API 
 $("#setVehicleInput").on("click", function() {
-    var mileage = $("#mileageInput").val();
-    var lastchange = $("#lastOilChange").val();
-    var make = $("#vehicle-model").val();
-    var model = $("#vehicle-make").val();
+    mileage = $("#mileageInput").val();
+    lastChange = $("#lastOilChange").val();
+    make = $("#vehicle-model").val();
+    model = $("#vehicle-make").val();
     console.log(make);
     console.log(model);
+
+    database.ref().set({
+        make: make,
+        model: model,
+        lastChange: lastChange,
+        mileage: mileage,
+    });
 
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + model + "_" + make + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
 console.log(queryURL);
