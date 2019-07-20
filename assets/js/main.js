@@ -1,5 +1,18 @@
-var usermiles = 0;
-console.log(usermiles);
+$(window).on('load', function() {
+    var userData = localStorage.getItem('vehicle-details');
+    if (userData == null) {
+
+        $("#vehicle-info").modal('show');
+    } else {}
+});
+
+$("#setVehicleInput").on("click", function () {
+    localStorage.setItem('vehicle-details', true);
+    var userData = localStorage.getItem('vehicle-details');
+});
+$("#resetInfo").on("click", function () {
+    localStorage.clear();
+});
 
 //First we need to create the user registration database 
 var firebaseConfig = {
@@ -14,24 +27,24 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
-$("#create-user").on("click", function (event) {
-    event.preventDefault();
-    // Get inputs
-    email = $("#inputEmail").val().trim();
-    password = $("#inputPassword")
-    phone = $("#inputPhone").val().trim();
+// $("#create-user").on("click", function (event) {
+//     event.preventDefault();
+//     // Get inputs
+//     email = $("#inputEmail").val().trim();
+//     password = $("#inputPassword")
+//     phone = $("#inputPhone").val().trim();
 
-    // Save in firebase
-    database.ref().set({
-        email: email,
-        phone: phone,
-        make: make,
-        model: model,
-        year: year,
-        oilchange: oilchange,
-        mileage: mileage,
-    });
-});
+//     // Save in firebase
+//     database.ref().set({
+//         email: email,
+//         phone: phone,
+//         make: make,
+//         model: model,
+//         year: year,
+//         oilchange: oilchange,
+//         mileage: mileage,
+//     });
+// });
 
 //This hides the user signup form until they click the register button 
 function showForm() {
@@ -56,23 +69,33 @@ function showForm() {
         y.style.display = "none";
     }
 }
-//Create the login function when a user already has an account that then leads to the dashboard
+//YOUTUBE API 
+$("#setVehicleInput").on("click", function() {
+    var mileage = $("#mileageInput").val();
+    var lastchange = $("#lastOilChange").val();
+    var make = $("#vehicle-model").val();
+    var model = $("#vehicle-make").val();
+    console.log(make);
+    console.log(model);
 
-var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=oil_change&key=AIzaSyAgA2B82VMDKMe0skNBKgiM0fIOTqBZPG0"
-
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + model + "_" + make + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
+console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-
-      // Printing the entire object to console
-      console.log(response.items[1].id.videoId);
+      console.log(response);
       var videoid = response.items[1].id.videoId;
       document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
 
     });
+  });
 
 
+
+
+
+    //MAPS API 
 
     var proxyurl = "https://cors-anywhere.herokuapp.com/";
     var mapsurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.786,-84.379&radius=5000&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs"; 
