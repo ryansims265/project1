@@ -6,21 +6,19 @@
     <title>Car Med</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/style/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/style/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $(window).on('load', function() {
-            var userData = localStorage.getItem('vehicle-details');
-            if (userData == null) {
 
-                $("#vehicle-info").modal('show');
-            } else {}
-        });
     </script>
 
 
@@ -28,7 +26,8 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png" style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
+        <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png"
+                style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
     </nav>
     <div id="bodyWrapper">
         <div class="container">
@@ -43,20 +42,23 @@
 
             <div class="row mt-5">
                 <div class="col" style="margin:0 auto; text-align: center;">
-                    <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#exampleModal">
-                            DIY Service
-                        </button>
+                    <button type="button" class="btn btn-secondary button1" data-toggle="modal"
+                        data-target="#exampleModal">
+                        DIY Service
+                    </button>
                 </div>
                 <div class="col" style="margin:0 auto; text-align: center;">
 
-                    <div class="headerDivider"> <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#exampleModalTwo">
+                    <div class="headerDivider"> <button type="button" class="btn btn-secondary button1"
+                            data-toggle="modal" data-target="#exampleModalTwo">
                             Services near you
                         </button></div>
                 </div>
                 <div class="col" style="margin:0 auto; text-align: center;">
-                    <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
-                                Reset Vehicle Info
-                            </button>
+                    <button type="button" class="btn btn-secondary button1" data-toggle="modal"
+                        data-target="#vehicle-info" id="resetInfo">
+                        Reset Vehicle Info
+                    </button>
                 </div>
 
 
@@ -69,43 +71,45 @@
 
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">DIY(Do it Yourself)
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
 
                     <div class="modal-body">
                         <iframe id="video-here"></iframe>
-                        
+
 
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
-                                you come
-                                again
-                            </button>
+                            you come
+                            again
+                        </button>
 
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModalTwo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModalTwo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabelTwo">Services near you
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <h3>Google Maps</h3>
@@ -151,41 +155,46 @@
             </div>
         </div>
 
-        <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="form-row">
                                 <div class="col">
                                     <!-- enter mileage text input -->
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Mileage" id="mileageInput">
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Mileage"
+                                        id="mileageInput">
                                 </div>
 
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
+                                    <input type="text" class="form-control" placeholder="Enter Last Oil Change"
+                                        id="lastOilChange">
                                 </div>
                             </div>
                             <div class="form-row">
 
                                 <div class="col mt-2">
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Make">
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Make"
+                                        id="vehicle-make">
                                 </div>
 
                                 <div class="col mt-2">
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Model">
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Model"
+                                        id="vehicle-model">
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">See
-                                Maintenance Options</button>
+                            Maintenance Options</button>
                     </div>
                     </form>
 
@@ -194,13 +203,6 @@
         </div>
 
         <script type="text/javascript">
-            $("#setVehicleInput").on("click", function() {
-                localStorage.setItem('vehicle-details', true);
-                var userData = localStorage.getItem('vehicle-details');
-            });
-            $("#resetInfo").on("click", function() {
-                localStorage.clear();
-            });
         </script>
         <script type="text/javascript" src="assets/js/main.js">
         </script>
