@@ -1,5 +1,7 @@
-var usermiles = 0;
-console.log(usermiles);
+var make = "";
+var model = "";
+var mileage = "";
+var lastChange = "";
 
 //First we need to create the user registration database 
 var firebaseConfig = {
@@ -7,31 +9,54 @@ var firebaseConfig = {
     authDomain: "car-med.firebaseapp.com",
     databaseURL: "https://car-med.firebaseio.com",
     projectId: "car-med",
-    storageBucket: "",
+    storageBucket: "car-med.appspot.com",
     messagingSenderId: "1055506661486",
     appId: "1:1055506661486:web:78899fa40aad7d63"
-};
-firebase.initializeApp(firebaseConfig);
+  };
+  firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
-$("#create-user").on("click", function (event) {
-    event.preventDefault();
-    // Get inputs
-    email = $("#inputEmail").val().trim();
-    password = $("#inputPassword")
-    phone = $("#inputPhone").val().trim();
-
-    // Save in firebase
-    database.ref().set({
-        email: email,
-        phone: phone,
-        make: make,
-        model: model,
-        year: year,
-        oilchange: oilchange,
-        mileage: mileage,
-    });
+database.ref().set({
+    make: make,
+    model: model,
+    lastChange: lastChange,
+    mileage: mileage,
 });
+
+$(window).on('load', function() {
+    var userData = localStorage.getItem('vehicle-details');
+    if (userData == null) {
+
+        $("#vehicle-info").modal('show');
+    } else {}
+});
+
+$("#setVehicleInput").on("click", function () {
+    localStorage.setItem('vehicle-details', true);
+    var userData = localStorage.getItem('vehicle-details');
+});
+$("#resetInfo").on("click", function () {
+    localStorage.clear();
+});
+
+// $("#create-user").on("click", function (event) {
+//     event.preventDefault();
+//     // Get inputs
+//     email = $("#inputEmail").val().trim();
+//     password = $("#inputPassword")
+//     phone = $("#inputPhone").val().trim();
+
+//     // Save in firebase
+//     database.ref().set({
+//         email: email,
+//         phone: phone,
+//         make: make,
+//         model: model,
+//         year: year,
+//         oilchange: oilchange,
+//         mileage: mileage,
+//     });
+// });
 
 //This hides the user signup form until they click the register button 
 function showForm() {
@@ -56,23 +81,40 @@ function showForm() {
         y.style.display = "none";
     }
 }
-//Create the login function when a user already has an account that then leads to the dashboard
+//YOUTUBE API 
+$("#setVehicleInput").on("click", function() {
+    mileage = $("#mileageInput").val();
+    lastChange = $("#lastOilChange").val();
+    make = $("#vehicle-model").val();
+    model = $("#vehicle-make").val();
+    console.log(make);
+    console.log(model);
 
-var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=oil_change&key=AIzaSyAgA2B82VMDKMe0skNBKgiM0fIOTqBZPG0"
+    database.ref().set({
+        make: make,
+        model: model,
+        lastChange: lastChange,
+        mileage: mileage,
+    });
 
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + model + "_" + make + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
+console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-
-      // Printing the entire object to console
-      console.log(response.items[1].id.videoId);
+      console.log(response);
       var videoid = response.items[1].id.videoId;
       document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
 
     });
+  });
 
 
+
+
+
+    //MAPS API 
 
     var proxyurl = "https://cors-anywhere.herokuapp.com/";
     var mapsurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.786,-84.379&radius=5000&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs"; 

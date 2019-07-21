@@ -19,9 +19,7 @@
             var userData = localStorage.getItem('vehicle-details');
             var inputCarModel = localStorage.getItem('inputCarModel');
             var inputCarMake = localStorage.getItem('inputCarMake');
-
-
-
+          
             // if there is no local session data, display vehicle input modal 
             if (userData == null) {
                 $("#intro-modal").modal('show');
@@ -98,17 +96,16 @@
                 }
             }
         });
+
     </script>
-
-
-
 
 </head>
 
 <body>
     <!-- TOP BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png" style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
+        <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png"
+                style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
     </nav>
 
     <!-- CONTENT WRAP FOR STICKEY FOOTER -->
@@ -141,6 +138,7 @@
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
 
+
                     <div class="headerDivider"> <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#Services-modal">
                                 Services nearby
                             </button></div>
@@ -159,10 +157,6 @@
 
     </div>
     <footer id="footer">Best dang Car App on the Market!</footer>
-
-
-
-
 
     <!-- INTRODUCTION MODAL  -->
     <div class="modal fade" id="intro-modal" tabindex="-1" role="dialog" aria-labelledby="Introduction" aria-hidden="true">
@@ -218,7 +212,6 @@
                             <div class="col mt-2">
                                 <input type="text" class="form-control" placeholder="Enter Vehicle Make" name="inputCarMake" id="inputCarMake">
                             </div>
-
                             <div class="col mt-2">
                                 <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="inputCarModel" id="inputCarModel">
                             </div>
@@ -246,24 +239,18 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                 </div>
-
                 <div class="modal-body">
                     <iframe id="video-here"></iframe>
-
-
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
                                 you come
                                 again
                             </button>
-
                 </div>
             </div>
         </div>
     </div>
-
     <!-- SERVICES NEAR USER MODAL -->
     <div class="modal fade" id="Services-modal" tabindex="-1" role="dialog" aria-labelledby="Nearby Services" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -320,6 +307,7 @@
 
 
         <script type="text/javascript">
+
             function showUserInputModal() {
                 $("#vehicle-info").modal('show');
             }
@@ -445,6 +433,7 @@
                 $("#mileageOutput").html("");
 
             });
+
         </script>
         <script type="text/javascript" src="assets/js/main.js">
         </script>
