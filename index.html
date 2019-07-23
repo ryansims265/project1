@@ -139,7 +139,7 @@
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
 
-                    <div class="headerDivider"> <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#Services-modal">
+                    <div class="headerDivider"> <button type="button" class="btn btn-secondary button1" id="services-button" class="btn btn-secondary button1" data-toggle="modal" data-target="#shops-near-you">
                                 Services nearby
                             </button></div>
                 </div>
@@ -258,7 +258,7 @@
     </div>
 
     <!-- SERVICES NEAR USER MODAL -->
-    <div class="modal fade" id="Services-modal" tabindex="-1" role="dialog" aria-labelledby="Nearby Services" aria-hidden="true">
+    <!-- <div class="modal fade" id="Services-modal" tabindex="-1" role="dialog" aria-labelledby="Nearby Services" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -310,137 +310,155 @@
 
             </div>
         </div>
+    </div> -->
+
+    <!-- **********************************Map page content box start here *********************************************** -->
+    <div class="container" id="shops-near-you" style="display: none;">
+        <h1 class="sub-header">Services Near You</h1>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Google Maps</h3>
+                <div id="map"></div>
+            </div>
+            <div class="col-sm-4" id="shop-list">
+                <div id="services-table-body">
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-        <script type="text/javascript">
-            function showUserInputModal() {
-                $("#vehicle-info").modal('show');
+
+    <script type="text/javascript">
+        function showUserInputModal() {
+            $("#vehicle-info").modal('show');
+        }
+
+        $("#setVehicleInput").on("click", function() {
+
+            // capture user inputs, store to variables
+            var mileage = parseInt($("#mileageInput").val().trim());
+            var lastChange = parseInt($("#lastOilChange").val().trim());
+            var inputCarMake = $("#inputCarMake").val().trim();
+            var inputCarModel = $("#inputCarModel").val().trim();
+            localStorage.setItem('inputCarModel', inputCarModel);
+            inputCarModel = localStorage.getItem('inputCarModel');
+            localStorage.setItem('inputCarMake', inputCarMake);
+            inputCarMake = localStorage.getItem('inputCarMake');
+
+            if (mileage <= lastChange) {
+                alert("Your current mileage can't be greater than the mileage of your last oil change...");
+                return false;
+            }
+            if (isNaN(mileage) || isNaN(lastChange)) {
+                alert("please enter a valid number for your current mileage and the mileage of your last oilchange");
+                return false;
+            }
+            if (inputCarMake == "" || inputCarModel == "") {
+                alert("please enter the make and model of your vehicle");
+                return false;
             }
 
-            $("#setVehicleInput").on("click", function() {
+            // calculate miles until next oil change, based on the presumption that an oil change is needed every 5000 miles 
+            var nextChange = parseInt(lastChange) + parseInt("8000") - parseInt(mileage);
 
-                // capture user inputs, store to variables
-                var mileage = parseInt($("#mileageInput").val().trim());
-                var lastChange = parseInt($("#lastOilChange").val().trim());
-                var inputCarMake = $("#inputCarMake").val().trim();
-                var inputCarModel = $("#inputCarModel").val().trim();
-                localStorage.setItem('inputCarModel', inputCarModel);
-                inputCarModel = localStorage.getItem('inputCarModel');
-                localStorage.setItem('inputCarMake', inputCarMake);
-                inputCarMake = localStorage.getItem('inputCarMake');
+            //set nextChange to local storage and then display above graph
+            localStorage.setItem('next-oil-change', nextChange);
+            var localNextChange = localStorage.getItem('next-oil-change');
 
-                if (mileage <= lastChange) {
-                    alert("Your current mileage can't be greater than the mileage of your last oil change...");
-                    return false;
-                }
-                if (isNaN(mileage) || isNaN(lastChange)) {
-                    alert("please enter a valid number for your current mileage and the mileage of your last oilchange");
-                    return false;
-                }
-                if (inputCarMake == "" || inputCarModel == "") {
-                    alert("please enter the make and model of your vehicle");
-                    return false;
-                }
+            // generate percent value of progress towards next oil change, take circumfrence of circle, multiply by percentage  (1 - miles until next change divided by 5000)
+            var percentage = 339.292 * parseFloat(1 - (nextChange / 8000));
+            console.log(percentage);
 
-                // calculate miles until next oil change, based on the presumption that an oil change is needed every 5000 miles 
-                var nextChange = parseInt(lastChange) + parseInt("8000") - parseInt(mileage);
+            // setting percentage to local storage 
+            localStorage.setItem('vehicle-mileage-percentage', percentage);
+            var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
+            if (localNextChange < 0) {
+                $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " needed an oil change " + -localNextChange + " miles ago!");
+                // add percentage value to html element
+                $('#graphValue').data('stroke-dashoffset', "0");
 
-                //set nextChange to local storage and then display above graph
-                localStorage.setItem('next-oil-change', nextChange);
-                var localNextChange = localStorage.getItem('next-oil-change');
+                // add percentage value to element's CSS
+                $('#graphValue').css("stroke-dashoffset", "0");
 
-                // generate percent value of progress towards next oil change, take circumfrence of circle, multiply by percentage  (1 - miles until next change divided by 5000)
-                var percentage = 339.292 * parseFloat(1 - (nextChange / 8000));
-                console.log(percentage);
+                // hack to re-initiate keyframe animation 
+                setTimeout(function() {
+                    $("#graphValue").removeClass("progress-value");
 
-                // setting percentage to local storage 
-                localStorage.setItem('vehicle-mileage-percentage', percentage);
-                var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
-                if (localNextChange < 0) {
-                    $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " needed an oil change " + -localNextChange + " miles ago!");
-                    // add percentage value to html element
-                    $('#graphValue').data('stroke-dashoffset', "0");
+                }, 10);
+                setTimeout(function() {
+                    $("#graphValue").addClass("progress-value");
+                }, 15);
 
-                    // add percentage value to element's CSS
-                    $('#graphValue').css("stroke-dashoffset", "0");
-
-                    // hack to re-initiate keyframe animation 
-                    setTimeout(function() {
-                        $("#graphValue").removeClass("progress-value");
-
-                    }, 10);
-                    setTimeout(function() {
-                        $("#graphValue").addClass("progress-value");
-                    }, 15);
-
-                    //change stroke offset in CSS Animation keyframe to match percentage
-                    var KeyFrame = {
-                            init: function() {
-                                if (!KeyFrame.check) {
-                                    //get the left position
-                                    //  var pushLeft = $('.push').position().left;
-                                    //set the style and append to head
-                                    var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:0;}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
-                                    //so u don't keep appending style to head
-                                    KeyFrame.check = true;
-                                }
+                //change stroke offset in CSS Animation keyframe to match percentage
+                var KeyFrame = {
+                        init: function() {
+                            if (!KeyFrame.check) {
+                                //get the left position
+                                //  var pushLeft = $('.push').position().left;
+                                //set the style and append to head
+                                var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:0;}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
+                                //so u don't keep appending style to head
+                                KeyFrame.check = true;
                             }
                         }
-                        // initiliaze keyframe
-                    KeyFrame.init();
-                } else {
-                    $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " has " + localNextChange + " miles until next oil change");
-                    // add percentage value to html element
-                    $('#graphValue').data('stroke-dashoffset', localPercentage);
+                    }
+                    // initiliaze keyframe
+                KeyFrame.init();
+            } else {
+                $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " has " + localNextChange + " miles until next oil change");
+                // add percentage value to html element
+                $('#graphValue').data('stroke-dashoffset', localPercentage);
 
-                    // add percentage value to element's CSS
-                    $('#graphValue').css("stroke-dashoffset", localPercentage);
+                // add percentage value to element's CSS
+                $('#graphValue').css("stroke-dashoffset", localPercentage);
 
-                    // hack to re-initiate keyframe animation 
-                    setTimeout(function() {
-                        $("#graphValue").removeClass("progress-value");
+                // hack to re-initiate keyframe animation 
+                setTimeout(function() {
+                    $("#graphValue").removeClass("progress-value");
 
-                    }, 10);
-                    setTimeout(function() {
-                        $("#graphValue").addClass("progress-value");
-                    }, 15);
+                }, 10);
+                setTimeout(function() {
+                    $("#graphValue").addClass("progress-value");
+                }, 15);
 
-                    //change stroke offset in CSS Animation keyframe to match percentage
-                    var KeyFrame = {
-                            init: function() {
-                                if (!KeyFrame.check) {
-                                    //get the left position
-                                    //  var pushLeft = $('.push').position().left;
-                                    //set the style and append to head
-                                    var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:' + localPercentage + ';}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
-                                    //so u don't keep appending style to head
-                                    KeyFrame.check = true;
-                                }
+                //change stroke offset in CSS Animation keyframe to match percentage
+                var KeyFrame = {
+                        init: function() {
+                            if (!KeyFrame.check) {
+                                //get the left position
+                                //  var pushLeft = $('.push').position().left;
+                                //set the style and append to head
+                                var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:' + localPercentage + ';}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
+                                //so u don't keep appending style to head
+                                KeyFrame.check = true;
                             }
                         }
-                        // initiliaze keyframe
-                    KeyFrame.init();
-                }
+                    }
+                    // initiliaze keyframe
+                KeyFrame.init();
+            }
 
 
 
-                // setting the boolean value of vehicle details to true in local storage; upon page load, if this value is true, the onLoad modal will not display. See window onload function above.
-                localStorage.setItem('vehicle-details', true);
-                var userData = localStorage.getItem('vehicle-details');
-            });
+            // setting the boolean value of vehicle details to true in local storage; upon page load, if this value is true, the onLoad modal will not display. See window onload function above.
+            localStorage.setItem('vehicle-details', true);
+            var userData = localStorage.getItem('vehicle-details');
+        });
 
-            // reset info button clears local storage and primes SVG animation to be fired again... need to keep working on this
-            $("#resetInfo").on("click", function() {
-                $("#graphValue").removeClass("progress-value");
-                localStorage.clear();
-                $('#graphValue').data("stroke-dashoffset", "");
-                $('#graphValue').css("stroke-dashoffset", "");
-                $("#mileageOutput").html("");
+        // reset info button clears local storage and primes SVG animation to be fired again... need to keep working on this
+        $("#resetInfo").on("click", function() {
+            $("#graphValue").removeClass("progress-value");
+            localStorage.clear();
+            $('#graphValue').data("stroke-dashoffset", "");
+            $('#graphValue').css("stroke-dashoffset", "");
+            $("#mileageOutput").html("");
 
-            });
-        </script>
-        <script type="text/javascript" src="assets/js/main.js">
-        </script>
+        });
+    </script>
+    <script type="text/javascript" src="assets/js/main.js">
+    </script>
 </body>
 
 </html>
