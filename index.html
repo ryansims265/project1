@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/style/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(window).on('load', function() {
@@ -97,16 +100,19 @@
             }
         });
 
+
     </script>
 
 </head>
 
 <body>
+
     <!-- TOP BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png"
                 style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
     </nav>
+
 
     <!-- CONTENT WRAP FOR STICKEY FOOTER -->
     <div id="content-wrap">
@@ -139,7 +145,7 @@
                 <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
 
 
-                    <div class="headerDivider"> <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#Services-modal">
+                    <div class="headerDivider"> <button type="button" id="services-button" class="btn btn-secondary button1" data-toggle="modal" data-target="#shops-near-you">
                                 Services nearby
                             </button></div>
                 </div>
@@ -174,7 +180,9 @@
 
                     <p> Not sure when you should get your next oil change? No worries, Car-Med has got your back. Enter you vehicle details and we'll direct you to resources for DIY self-maintanence or services near you.</p>
 
+
                 </div>
+                <div class="col" style="margin:0 auto; text-align: center;">
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="showUserInputModal()">OK, got it!
@@ -227,8 +235,7 @@
         </div>
     </div>
 
-
-    <!-- DIY VIDEOS MODAL -->
+          <!-- DIY VIDEOS MODAL -->
     <div class="modal fade" id="DIY-modal" tabindex="-1" role="dialog" aria-labelledby="DIY videos" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -250,61 +257,81 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- SERVICES NEAR USER MODAL -->
-    <div class="modal fade" id="Services-modal" tabindex="-1" role="dialog" aria-labelledby="Nearby Services" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabelTwo">Services near you
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                </div>
-                <div class="modal-body">
+    </div>   
+      
+      
+        <!-- **********************************Map page content box start here *********************************************** -->
+
+
+        <div class="container" id="shops-near-you" style="display: none;">
+                <h1 class="sub-header">Services Near You</h1>
+        
+            <div class="row">
+                <div class="col-lg-8">
                     <h3>Google Maps</h3>
-                    <table class="table table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Distance(m)</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row" id="distance1">2.1</th>
-                                <td id="serviceName1"></td>
-                                <td id="serviceAddress1"></td>
-                                <td id="serviceRating1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" id="distance2">3.6</th>
-                                <td id="serviceName2"></td>
-                                <td id="serviceAddress2"></td>
-                                <td id="serviceRating2"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" id="distance3">7.4</th>
-                                <td id="serviceName3"></td>
-                                <td id="serviceAddress3"></td>
-                                <td id="serviceRating3"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
+                   <div id="map"></div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="col-sm-4" id="shop-list">
+                        <div id="services-table-body">
+                        </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="modal fade" id="vehicle-info-old" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <!-- enter mileage text input -->
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Mileage"
+                                        id="mileageInput">
+                                </div>
+
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Enter Last Oil Change"
+                                        id="lastOilChange">
+                                </div>
+                            </div>
+                            <div class="form-row">
+
+                                <div class="col mt-2">
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Make"
+                                        id="vehicle-make">
+                                </div>
+
+                                <div class="col mt-2">
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Model"
+                                        id="vehicle-model">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">See
+                            Maintenance Options</button>
+                    </div>
+                    </form>
+                      
                 </div>
 
             </div>
         </div>
+        <footer id="footer">Best dang Car App on the Market!</footer>
 
+        <script type="text/javascript" src="assets/js/main.js">
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs&callback=initMap">
+        </script>
 
         <script type="text/javascript">
 
@@ -417,8 +444,6 @@
                     KeyFrame.init();
                 }
 
-
-
                 // setting the boolean value of vehicle details to true in local storage; upon page load, if this value is true, the onLoad modal will not display. See window onload function above.
                 localStorage.setItem('vehicle-details', true);
                 var userData = localStorage.getItem('vehicle-details');
@@ -433,8 +458,8 @@
                 $("#mileageOutput").html("");
 
             });
-
         </script>
+      
         <script type="text/javascript" src="assets/js/main.js">
         </script>
 </body>
