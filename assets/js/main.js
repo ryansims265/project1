@@ -2,6 +2,7 @@ var make = "";
 var model = "";
 var mileage = "";
 var lastChange = "";
+
 var places = [];
 
 $(document).ready(function() {
@@ -48,7 +49,30 @@ $("#setVehicleInput").on("click", function () {
 });
 $("#resetInfo").on("click", function () {
   localStorage.removeItem('vehicle-details');
+
 });
+$("#resetInfo").on("click", function () {
+    localStorage.clear();
+});
+
+// $("#create-user").on("click", function (event) {
+//     event.preventDefault();
+//     // Get inputs
+//     email = $("#inputEmail").val().trim();
+//     password = $("#inputPassword")
+//     phone = $("#inputPhone").val().trim();
+
+//     // Save in firebase
+//     database.ref().set({
+//         email: email,
+//         phone: phone,
+//         make: make,
+//         model: model,
+//         year: year,
+//         oilchange: oilchange,
+//         mileage: mileage,
+//     });
+// });
 
 // $("#create-user").on("click", function (event) {
 //     event.preventDefault();
@@ -181,8 +205,8 @@ function handleSuccess(position) {
 
 function handleError(error) {
   //Do something if user reject app using location
-
 }
+
 
 function getUserLocation() {
   //set location to null
@@ -224,3 +248,4 @@ function initMap() {
     })(marker, index));
   }
 }
+
