@@ -1,3 +1,4 @@
+// declaring global-ish variables
 var make = "";
 var model = "";
 var mileage = "";
@@ -7,24 +8,8 @@ var google;
 
 var places = [];
 
-$(document).ready(function() {
-    $('#services-button').click(function() {
-        $('#shops-near-you').delay(2000).fadeIn(500);
-        $('#main-container').hide();
-    });
-});
 
-var places = [];
-
-$(document).ready(function() {
-    $('#services-button').click(function() {
-        $('#shops-near-you').delay(2000).fadeIn(500);
-        $('#main-container"').hide();
-
-    });
-});
-
-//First we need to create the user registration database 
+// setting up firebase configuration, which pushes and pulls data for the youtube API. Later, we'll use this firebase project for setting up User logins
 var firebaseConfig = {
     apiKey: "AIzaSyCBrNS7nMK1bZWb-xwKrLlh9ESVNQqhzls",
     authDomain: "car-med.firebaseapp.com",
@@ -39,20 +24,17 @@ var database = firebase.database();
 
 database.ref().set({
     make: make,
-    model: model,
-    lastChange: lastChange,
-    mileage: mileage,
+    model: model
 });
 
-
+// Window on load function that checks for user location, checks for previous session data in local storage, renders the radial graphic animation and renders text in the vehicle information container
 $(window).on('load', function() {
 
     checkUserLocation();
 
     // retrieve local session boolean
     var userData = localStorage.getItem('vehicle-details');
-    var inputCarModel = localStorage.getItem('inputCarModel');
-    var inputCarMake = localStorage.getItem('inputCarMake');
+
 
     // if there is no local session data, display vehicle input modal 
     if (userData == null) {
@@ -61,6 +43,8 @@ $(window).on('load', function() {
         // retrieve local storage data 
         var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
         var localNextChange = localStorage.getItem('next-oil-change');
+        var inputCarModel = localStorage.getItem('inputCarModel');
+        var inputCarMake = localStorage.getItem('inputCarMake');
 
         // render miles until next change in div 
         if (localNextChange < 0) {
@@ -127,9 +111,11 @@ $(window).on('load', function() {
                 // initiliaze keyframe
             KeyFrame.init();
         }
+
     }
 });
 
+// function for showing modal input after reset button is clicked
 function showUserInputModal() {
     $("#vehicle-info").modal('show');
 }
@@ -249,37 +235,33 @@ $("#resetInfo").on("click", function() {
 });
 
 //YOUTUBE API 
-$("#setVehicleInput").on("click", function() {
-    mileage = $("#mileageInput").val();
-    lastChange = $("#lastOilChange").val();
-    make = $("#vehicle-model").val();
-    model = $("#vehicle-make").val();
-    // console.log(make);
-    // console.log(model);
+function youTubeAPI() {
+    make = localStorage.getItem('inputCarMake')
+    model = localStorage.getItem('inputCarModel')
 
     database.ref().set({
         make: make,
-        model: model,
-        lastChange: lastChange,
-        mileage: mileage,
+        model: model
     });
 
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + model + "_" + make + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
-        // console.log(queryURL);
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + make + "_" + model + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
+    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        // console.log(response);
+        console.log(response);
         var videoid = response.items[1].id.videoId;
         document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
-
     });
+}
+
+$("#videos-button").click(function() {
+    youTubeAPI();
 });
 
 //MAPS API 
 $('#services-button').click(function() {
-    $("#shops-near-you").show();
     //get the user location from storage
     var location = getUserLocation();
     //call the api with the user specific location 
@@ -314,7 +296,7 @@ $('#services-button').click(function() {
 
         initMap();
     });
-})
+});
 
 function checkUserLocation() {
     //try to get both the latitude and longitude from storage

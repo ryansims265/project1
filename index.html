@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/style/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-
-
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
@@ -21,9 +18,8 @@
 
     <!-- TOP BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png" style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
+        <a class="navbar-brand" id="about" style="color:whitesmoke;"><img src="assets/car_logo.png" style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
     </nav>
-
 
     <!-- CONTENT WRAP FOR STICKEY FOOTER -->
     <div id="content-wrap">
@@ -36,8 +32,8 @@
                             <h6 class="statusBoxHeader p-1">Oil Change</h6>
                             <p id="mileageOutput"></p>
                             <svg width="120" height="120" viewBox="0 0 120 120" class="flip-it">
-                            <circle cx="60" cy="60" r="54" fill="none" stroke="#e6e6e6" stroke-width="12" />
-                            <circle id="graphValue" cx="60" cy="60" r="54" fill="none" stroke="#f77a52" stroke-width="12"
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#A9A9A9" stroke-width="12" />
+                            <circle id="graphValue" cx="60" cy="60" r="54" fill="none" stroke="#ff8400" stroke-width="12"
                                 stroke-dasharray="339.292" stroke-dashoffset="339.292"/>
                         </svg>
                             <br>
@@ -46,29 +42,36 @@
                     </div>
                 </div>
 
+                <div class="container buttonGroup">
+                    <!-- row of buttons -->
+                    <div class="row mt-5">
 
-                <!-- BUTTONS TO SUMMON MODALS -->
-                <div class="row mt-5">
-                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
-                        <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#DIY-modal">
-                                DIY videos
-                            </button>
-                    </div>
-                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
+                        <!-- button -->
+                        <div class="col buttonCol" style="margin:auto; text-align: center;">
+                            <button id="videos-button" type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#DIY-modal">
+                                            DIY videos
+                                        </button>
+                        </div>
 
-                        <div class="headerDivider">
-                            <button id="services-button" type="button" class="btn btn-secondary button1" data-toggle="container" data-target="#shops-near-you">
-                            Services near you
-                        </button></div>
+                        <!-- button -->
+                        <div class="col buttonCol" style="margin:auto; text-align: center;">
+                            <div class="headerDivider">
+                                <button id="services-button" type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#shops-near-you">
+                                        Services near you
+                                    </button>
+                            </div>
+                        </div>
 
-                    </div>
-                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
-                        <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
-                                    Reset info
-                                </button>
+                        <!-- button -->
+                        <div class="col buttonCol" style="margin:auto; text-align: center;">
+                            <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
+                                        Reset info
+                                    </button>
+                        </div>
+
+
                     </div>
                 </div>
-
                 <br><br>
             </div>
 
@@ -105,7 +108,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- USER INPUT MODAL  -->
     <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="enter vehicle details" aria-hidden="true">
@@ -162,15 +164,13 @@
                 </div>
 
                 <div class="modal-body">
-                    <iframe id="video-here"></iframe>
+                    <iframe id="video-here" style="width:100%; height:350px;"></iframe>
 
 
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
-                                you come
-                                again
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Exit
                             </button>
 
                 </div>
@@ -178,19 +178,34 @@
         </div>
     </div>
 
-    <!-- **********************************Map page content box start here *********************************************** -->
-    <div class="container" id="shops-near-you" style="display: none;">
-        <h1 class="sub-header">Services Near You</h1>
+    <div class="modal fade bd-example-modal-lg" id="shops-near-you" tabindex="-1" role="dialog" aria-labelledby="Shops near you" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document" id="services-modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Services Near You
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                </div>
 
-        <div class="row">
-            <div class="col-lg-8">
-                <h3>Google Maps</h3>
-                <div id="map"></div>
+                <div class="modal-body" id="services-modal-body">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h3>Google Maps</h3>
+                            <div id="map"></div>
+                        </div>
+                        <div class="col-sm-4" id="shop-list">
 
-            </div>
-            <div class="col-sm-4" id="shop-list" data-blind="foreach: items.slice(0, 6)">
+                            <div id="services-table-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Exit
+                                </button>
 
-                <div id="services-table-body">
                 </div>
             </div>
         </div>
