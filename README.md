@@ -15,3 +15,5 @@ When the user clicks the notification they are brought into the platform and giv
 If the user clicks "Do Myself" then they are given articles and videos via WikiHow API and Youtube API on how to complete the task 
 
 If the user clicks "Have it Done" the Google Maps API is called for the top rated car shops in the area and can text you the address
+
+Slides- https://docs.google.com/presentation/d/1CIrNyedOKLXEYH-ns04nNgu-KuRGvxfDLMdd0vp0wE8/edit?usp=sharing
