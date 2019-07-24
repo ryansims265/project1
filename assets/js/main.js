@@ -266,3 +266,103 @@ $("#setVehicleInput").on("click", function() {
 
     });
 });
+
+//MAPS API 
+$('#services-button').click(function() {
+    $("#shops-near-you").show();
+    //get the user location from storage
+    var location = getUserLocation();
+    //call the api with the user specific location 
+    var proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var mapsurl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&rankby=distance&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs`;
+    $.ajax({
+        url: proxyurl + mapsurl,
+        method: "GET"
+    }).then(function(response) {
+        var apiResults = response.results;
+        console.log(apiResults);
+        var limitedResults = apiResults.slice(0, 6);
+        //get the table body and save it a JQuery object
+        var servicesTableBody = $('#services-table-body');
+        //loop through the result 
+        limitedResults.forEach(function(result) {
+            places.push({
+                name: result.name,
+                lat: result.geometry.location.lat,
+                lng: result.geometry.location.lng
+            });
+            //create a table row for each result
+            var tableRow = `<ul>
+          <li class="serviceRating">${"Ratings: " + result.rating}<br>
+          <span class="serviceName">${result.name}<br>
+          <span class="serviceAddress">${result.vicinity}</span></li>
+         
+          </ul>`;
+            //add row to table body
+            servicesTableBody.append(tableRow);
+        });
+
+        initMap();
+    });
+})
+
+function checkUserLocation() {
+    //try to get both the latitude and longitude from storage
+    var location = getUserLocation();
+    //if location is null run the code below. If it  is not null, do nothing
+    if (!location) {
+        //get the user postion from browser. handleSuccess will be called if the user accepts
+        // to use location and handleError will be call if not
+        navigator.geolocation.getCurrentPosition(handleSuccess, handleError)
+    }
+}
+
+function handleSuccess(position) {
+    //set latitude in storage with key lat and latitude value from the coords object
+    localStorage.setItem('lat', position.coords.latitude);
+    //set latitude in storage  with key lng and longitude value from the coords object
+    localStorage.setItem('lng', position.coords.longitude);
+}
+
+function handleError(error) {
+    //Do something if user reject app using location
+}
+
+function getUserLocation() {
+    //set location to null
+    var location = null;
+    //try to get both the latitude and longitude from storage
+    var latitude = localStorage.getItem('lat');
+    var longitude = localStorage.getItem('lng');
+    //if both lat and lng exist 
+    if (latitude && longitude) {
+        //set location properties. They will come from local storage as string so we have to use 
+        //Number method to convert to number
+        location = {
+            lat: Number(latitude),
+            lng: Number(longitude)
+        }
+    }
+    //return location
+    return location;
+}
+
+function initMap() {
+    var location = getUserLocation();
+    var map = new google.maps.Map(document.getElementById('map'), { zoom: 12, center: location });
+    var infowindow = new google.maps.InfoWindow({});
+    var marker, index;
+    for (var index = 0; index < places.length; index++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(places[index].lat, places[index].lng),
+            map: map,
+            title: places[index].name
+        });
+        google.maps.event.addListener(marker, 'click', (function(marker, index) {
+            return function() {
+                infowindow.setContent(places[index]);
+                infowindow.open(map, marker);
+            }
+        })(marker, index));
+    }
+}

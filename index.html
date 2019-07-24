@@ -24,48 +24,52 @@
 
     <!-- CONTENT WRAP FOR STICKEY FOOTER -->
     <div id="content-wrap">
-        <!-- THE RADIAL GRAPH -->
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col col-xs-10 col-sm-6 col-md-6 col-lg-3" style="margin:0 auto;">
-                    <div class="container statusBox">
-                        <h6 class="statusBoxHeader p-1">Oil Change</h6>
-                        <p id="mileageOutput"></p>
-                        <svg width="120" height="120" viewBox="0 0 120 120" class="flip-it">
+        <div id="main-container" class="container">
+            <!-- THE RADIAL GRAPH -->
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col col-xs-10 col-sm-6 col-md-6 col-lg-3" style="margin:0 auto;">
+                        <div class="container statusBox">
+                            <h6 class="statusBoxHeader p-1">Oil Change</h6>
+                            <p id="mileageOutput"></p>
+                            <svg width="120" height="120" viewBox="0 0 120 120" class="flip-it">
                             <circle cx="60" cy="60" r="54" fill="none" stroke="#e6e6e6" stroke-width="12" />
                             <circle id="graphValue" cx="60" cy="60" r="54" fill="none" stroke="#f77a52" stroke-width="12"
                                 stroke-dasharray="339.292" stroke-dashoffset="339.292"/>
                         </svg>
-                        <br>
-                        <br>
+                            <br>
+                            <br>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- BUTTONS TO SUMMON MODALS -->
-            <div class="row mt-5">
-                <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
-                    <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#DIY-modal">
+                <!-- BUTTONS TO SUMMON MODALS -->
+                <div class="row mt-5">
+                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
+                        <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#DIY-modal">
                                 DIY videos
                             </button>
-                </div>
-                <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
+                    </div>
+                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
 
-                    <div class="headerDivider"> <button type="button" class="btn btn-secondary button1" id="services-button" class="btn btn-secondary button1" data-target="#shops-near-you">
-                                Services nearby
-                            </button></div>
-                </div>
-                <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
-                    <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
+                        <div class="headerDivider">
+                            <button id="services-button" type="button" class="btn btn-secondary button1" data-toggle="container" data-target="#shops-near-you">
+                            Services near you
+                        </button></div>
+
+                    </div>
+                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
+                        <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
                                     Reset info
                                 </button>
+                    </div>
                 </div>
+
+                <br><br>
             </div>
 
-            <br><br>
         </div>
-
     </div>
     <footer id="footer">Best dang Car App on the Market!</footer>
 
@@ -176,8 +180,10 @@
             <div class="col-lg-8">
                 <h3>Google Maps</h3>
                 <div id="map"></div>
+
             </div>
-            <div class="col-sm-4" id="shop-list">
+            <div class="col-sm-4" id="shop-list" data-blind="foreach: items.slice(0, 6)">
+
                 <div id="services-table-body">
                 </div>
             </div>
@@ -186,6 +192,10 @@
 
     <script type="text/javascript" src="assets/js/main.js">
     </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs&callback=initMap">
+    </script>
+
 </body>
 
 </html>
