@@ -15,6 +15,8 @@
 
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<<<<<<< HEAD
+=======
     <script type="text/javascript">
         $(window).on('load', function() {
 
@@ -103,64 +105,78 @@
 
     </script>
 
+>>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
 </head>
 
 <body>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
     <!-- TOP BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png"
-                style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
+        <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png" style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
     </nav>
 
 
     <!-- CONTENT WRAP FOR STICKEY FOOTER -->
     <div id="content-wrap">
-        <!-- THE RADIAL GRAPH -->
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col col-xs-10 col-sm-6 col-md-6 col-lg-3" style="margin:0 auto;">
-                    <div class="container statusBox">
-                        <h6 class="statusBoxHeader p-1">Oil Change</h6>
-                        <p id="mileageOutput"></p>
-                        <svg width="120" height="120" viewBox="0 0 120 120" class="flip-it">
+        <div id="main-container" class="container">
+            <!-- THE RADIAL GRAPH -->
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col col-xs-10 col-sm-6 col-md-6 col-lg-3" style="margin:0 auto;">
+                        <div class="container statusBox">
+                            <h6 class="statusBoxHeader p-1">Oil Change</h6>
+                            <p id="mileageOutput"></p>
+                            <svg width="120" height="120" viewBox="0 0 120 120" class="flip-it">
                             <circle cx="60" cy="60" r="54" fill="none" stroke="#e6e6e6" stroke-width="12" />
                             <circle id="graphValue" cx="60" cy="60" r="54" fill="none" stroke="#f77a52" stroke-width="12"
                                 stroke-dasharray="339.292" stroke-dashoffset="339.292"/>
                         </svg>
-                        <br>
-                        <br>
+                            <br>
+                            <br>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- BUTTONS TO SUMMON MODALS -->
-            <div class="row mt-5">
-                <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
-                    <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#DIY-modal">
+                <!-- BUTTONS TO SUMMON MODALS -->
+                <div class="row mt-5">
+                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
+                        <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#DIY-modal">
                                 DIY videos
                             </button>
-                </div>
-                <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
+                    </div>
+                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
 
+                        <div class="headerDivider">
+                            <button id="services-button" type="button" class="btn btn-secondary button1" data-toggle="container" data-target="#shops-near-you">
+                            Services near you
+                        </button></div>
 
+<<<<<<< HEAD
+                    </div>
+                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
+                        <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
+=======
                     <div class="headerDivider"> <button type="button" id="services-button" class="btn btn-secondary button1" data-toggle="modal" data-target="#shops-near-you">
                                 Services nearby
                             </button></div>
                 </div>
                 <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
                     <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
+>>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
                                     Reset info
                                 </button>
+                    </div>
                 </div>
 
-
+                <br><br>
             </div>
 
-            <br><br>
         </div>
-
     </div>
     <footer id="footer">Best dang Car App on the Market!</footer>
 
@@ -207,7 +223,6 @@
                     <form name="userInput" id="userInputForm">
                         <div class="form-row">
                             <div class="col">
-                                <!-- enter mileage text input -->
                                 <input name="mileageInput" type="number" min="1" step="1" class="form-control" placeholder="Enter Current Mileage" id="mileageInput">
                             </div>
 
@@ -220,6 +235,7 @@
                             <div class="col mt-2">
                                 <input type="text" class="form-control" placeholder="Enter Vehicle Make" name="inputCarMake" id="inputCarMake">
                             </div>
+
                             <div class="col mt-2">
                                 <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="inputCarModel" id="inputCarModel">
                             </div>
@@ -246,23 +262,44 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                 </div>
+
                 <div class="modal-body">
                     <iframe id="video-here"></iframe>
+
+
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
                                 you come
                                 again
                             </button>
+
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+    </div>
+=======
     </div>   
       
       
         <!-- **********************************Map page content box start here *********************************************** -->
+>>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
 
+    <!-- **********************************Map page content box start here *********************************************** -->
+    <div class="container" id="shops-near-you" style="display: none;">
+        <h1 class="sub-header">Services Near You</h1>
 
+<<<<<<< HEAD
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Google Maps</h3>
+                <div id="map"></div>
+
+            </div>
+            <div class="col-sm-4" id="shop-list" data-blind="foreach: items.slice(0, 6)">
+=======
         <div class="container" id="shops-near-you" style="display: none;">
                 <h1 class="sub-header">Services Near You</h1>
         
@@ -322,9 +359,22 @@
                     </form>
                       
                 </div>
+>>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
 
+                <div id="services-table-body">
+                </div>
             </div>
         </div>
+<<<<<<< HEAD
+    </div>
+
+    <script type="text/javascript" src="assets/js/main.js">
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs&callback=initMap">
+    </script>
+
+=======
         <footer id="footer">Best dang Car App on the Market!</footer>
 
         <script type="text/javascript" src="assets/js/main.js">
@@ -462,6 +512,7 @@
       
         <script type="text/javascript" src="assets/js/main.js">
         </script>
+>>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
 </body>
 
 </html>
