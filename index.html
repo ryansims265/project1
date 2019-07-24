@@ -104,101 +104,103 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- USER INPUT MODAL  -->
-        <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="enter vehicle details" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+    <!-- USER INPUT MODAL  -->
+    <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="enter vehicle details" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                    </div>
-                    <div class="modal-body">
-                        <form name="userInput" id="userInputForm">
-                            <div class="form-row">
-                                <div class="col">
-                                    <input name="mileageInput" type="number" min="1" step="1" class="form-control" placeholder="Enter Current Mileage" id="mileageInput">
-                                </div>
-
-                                <div class="col">
-                                    <input name="lastOilChange" type="number" min="1" step="1" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
-                                </div>
-                            </div>
-                            <div class="form-row">
-
-                                <div class="col mt-2">
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Make" name="inputCarMake" id="inputCarMake">
-                                </div>
-
-                                <div class="col mt-2">
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="inputCarModel" id="inputCarModel">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="submit" value="See Maintenance Options" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">
-                            </div>
-
-                        </form>
-                    </div>
-
                 </div>
+                <div class="modal-body">
+                    <form name="userInput" id="userInputForm">
+                        <div class="form-row">
+                            <div class="col">
+                                <input name="mileageInput" type="number" min="1" step="1" class="form-control" placeholder="Enter Current Mileage" id="mileageInput">
+                            </div>
+
+                            <div class="col">
+                                <input name="lastOilChange" type="number" min="1" step="1" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="col mt-2">
+                                <input type="text" class="form-control" placeholder="Enter Vehicle Make" name="inputCarMake" id="inputCarMake">
+                            </div>
+
+                            <div class="col mt-2">
+                                <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="inputCarModel" id="inputCarModel">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="See Maintenance Options" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">
+                        </div>
+
+                    </form>
+                </div>
+
             </div>
         </div>
+    </div>
 
-        <!-- DIY VIDEOS MODAL -->
-        <div class="modal fade" id="DIY-modal" tabindex="-1" role="dialog" aria-labelledby="DIY videos" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">DIY(Do it Yourself)
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <!-- DIY VIDEOS MODAL -->
+    <div class="modal fade" id="DIY-modal" tabindex="-1" role="dialog" aria-labelledby="DIY videos" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">DIY(Do it Yourself)
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                    </div>
+                </div>
 
-                    <div class="modal-body">
-                        <iframe id="video-here"></iframe>
+                <div class="modal-body">
+                    <iframe id="video-here"></iframe>
 
 
-                    </div>
+                </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
                                 you come
                                 again
                             </button>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- **********************************Map page content box start here *********************************************** -->
-        <div class="container" id="shops-near-you" style="display: none;">
-            <h1 class="sub-header">Services Near You</h1>
+    <!-- **********************************Map page content box start here *********************************************** -->
+    <div class="container" id="shops-near-you" style="display: none;">
+        <h1 class="sub-header">Services Near You</h1>
 
-            <div class="row">
-                <div class="col-lg-8">
-                    <h3>Google Maps</h3>
-                    <div id="map"></div>
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Google Maps</h3>
+                <div id="map"></div>
 
-                </div>
-                <div class="col-sm-4" id="shop-list" data-blind="foreach: items.slice(0, 6)">
+            </div>
+            <div class="col-sm-4" id="shop-list" data-blind="foreach: items.slice(0, 6)">
 
-                    <div id="services-table-body">
-                    </div>
+                <div id="services-table-body">
                 </div>
             </div>
         </div>
+    </div>
 
-        <script type="text/javascript" src="assets/js/main.js">
-        </script>
+    <script type="text/javascript" src="assets/js/main.js">
+    </script>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs&callback=initMap">
-        </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs&callback=initMap">
+    </script>
 
 </body>
 
