@@ -15,105 +15,10 @@
 
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<<<<<<< HEAD
-=======
-    <script type="text/javascript">
-        $(window).on('load', function() {
-
-            // retrieve local session boolean
-            var userData = localStorage.getItem('vehicle-details');
-            var inputCarModel = localStorage.getItem('inputCarModel');
-            var inputCarMake = localStorage.getItem('inputCarMake');
-          
-            // if there is no local session data, display vehicle input modal 
-            if (userData == null) {
-                $("#intro-modal").modal('show');
-            } else {
-                // retrieve local storage data 
-                var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
-                var localNextChange = localStorage.getItem('next-oil-change');
-
-                // render miles until next change in div 
-                if (localNextChange < 0) {
-                    $("#mileageOutput").html("your " + inputCarMake + " " + inputCarModel + " needed an oil change " + -localNextChange + " miles ago!");
-                    // add percentage value to html element
-                    $('#graphValue').data('stroke-dashoffset', "0");
-
-                    // add percentage value to element's CSS
-                    $('#graphValue').css("stroke-dashoffset", "0");
-
-                    // hack to re-initiate keyframe animation 
-                    setTimeout(function() {
-                        $("#graphValue").removeClass("progress-value");
-
-                    }, 10);
-                    setTimeout(function() {
-                        $("#graphValue").addClass("progress-value");
-                    }, 15);
-
-                    //change stroke offset in CSS Animation keyframe to match percentage
-                    var KeyFrame = {
-                            init: function() {
-                                if (!KeyFrame.check) {
-                                    //get the left position
-                                    //  var pushLeft = $('.push').position().left;
-                                    //set the style and append to head
-                                    var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:0;}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
-                                    //so u don't keep appending style to head
-                                    KeyFrame.check = true;
-                                }
-                            }
-                        }
-                        // initiliaze keyframe
-                    KeyFrame.init();
-                } else {
-                    $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " has " + localNextChange + " miles until next oil change");
-                    // add percentage value to html element
-                    $('#graphValue').data('stroke-dashoffset', localPercentage);
-
-                    // add percentage value to element's CSS
-                    $('#graphValue').css("stroke-dashoffset", localPercentage);
-
-                    // hack to re-initiate keyframe animation 
-                    setTimeout(function() {
-                        $("#graphValue").removeClass("progress-value");
-
-                    }, 10);
-                    setTimeout(function() {
-                        $("#graphValue").addClass("progress-value");
-                    }, 15);
-
-                    //change stroke offset in CSS Animation keyframe to match percentage
-                    var KeyFrame = {
-                            init: function() {
-                                if (!KeyFrame.check) {
-                                    //get the left position
-                                    //  var pushLeft = $('.push').position().left;
-                                    //set the style and append to head
-                                    var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:' + localPercentage + ';}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
-                                    //so u don't keep appending style to head
-                                    KeyFrame.check = true;
-                                }
-                            }
-                        }
-                        // initiliaze keyframe
-                    KeyFrame.init();
-                }
-            }
-        });
-
-
-    </script>
-
->>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
 </head>
 
 <body>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
     <!-- TOP BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#" id="about"><img src="assets/car_logo.png" style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
@@ -156,18 +61,9 @@
                             Services near you
                         </button></div>
 
-<<<<<<< HEAD
                     </div>
                     <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
                         <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
-=======
-                    <div class="headerDivider"> <button type="button" id="services-button" class="btn btn-secondary button1" data-toggle="modal" data-target="#shops-near-you">
-                                Services nearby
-                            </button></div>
-                </div>
-                <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin:0 auto; text-align: center;">
-                    <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
->>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
                                     Reset info
                                 </button>
                     </div>
@@ -200,182 +96,103 @@
                 </div>
                 <div class="col" style="margin:0 auto; text-align: center;">
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="showUserInputModal()">OK, got it!
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="showUserInputModal()">OK, got it!
                                 </button>
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- USER INPUT MODAL  -->
-    <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="enter vehicle details" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                </div>
-                <div class="modal-body">
-                    <form name="userInput" id="userInputForm">
-                        <div class="form-row">
-                            <div class="col">
-                                <input name="mileageInput" type="number" min="1" step="1" class="form-control" placeholder="Enter Current Mileage" id="mileageInput">
-                            </div>
-
-                            <div class="col">
-                                <input name="lastOilChange" type="number" min="1" step="1" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
-                            </div>
-                        </div>
-                        <div class="form-row">
-
-                            <div class="col mt-2">
-                                <input type="text" class="form-control" placeholder="Enter Vehicle Make" name="inputCarMake" id="inputCarMake">
-                            </div>
-
-                            <div class="col mt-2">
-                                <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="inputCarModel" id="inputCarModel">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" value="See Maintenance Options" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-          <!-- DIY VIDEOS MODAL -->
-    <div class="modal fade" id="DIY-modal" tabindex="-1" role="dialog" aria-labelledby="DIY videos" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">DIY(Do it Yourself)
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                </div>
-
-                <div class="modal-body">
-                    <iframe id="video-here"></iframe>
-
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
-                                you come
-                                again
-                            </button>
-
-                </div>
-            </div>
-        </div>
-<<<<<<< HEAD
-    </div>
-=======
-    </div>   
-      
-      
-        <!-- **********************************Map page content box start here *********************************************** -->
->>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
-
-    <!-- **********************************Map page content box start here *********************************************** -->
-    <div class="container" id="shops-near-you" style="display: none;">
-        <h1 class="sub-header">Services Near You</h1>
-
-<<<<<<< HEAD
-        <div class="row">
-            <div class="col-lg-8">
-                <h3>Google Maps</h3>
-                <div id="map"></div>
-
-            </div>
-            <div class="col-sm-4" id="shop-list" data-blind="foreach: items.slice(0, 6)">
-=======
-        <div class="container" id="shops-near-you" style="display: none;">
-                <h1 class="sub-header">Services Near You</h1>
-        
-            <div class="row">
-                <div class="col-lg-8">
-                    <h3>Google Maps</h3>
-                   <div id="map"></div>
-                </div>
-                <div class="col-sm-4" id="shop-list">
-                        <div id="services-table-body">
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="vehicle-info-old" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <!-- USER INPUT MODAL  -->
+        <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="enter vehicle details" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form name="userInput" id="userInputForm">
                             <div class="form-row">
                                 <div class="col">
-                                    <!-- enter mileage text input -->
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Mileage"
-                                        id="mileageInput">
+                                    <input name="mileageInput" type="number" min="1" step="1" class="form-control" placeholder="Enter Current Mileage" id="mileageInput">
                                 </div>
 
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Enter Last Oil Change"
-                                        id="lastOilChange">
+                                    <input name="lastOilChange" type="number" min="1" step="1" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
                                 </div>
                             </div>
                             <div class="form-row">
 
                                 <div class="col mt-2">
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Make"
-                                        id="vehicle-make">
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Make" name="inputCarMake" id="inputCarMake">
                                 </div>
 
                                 <div class="col mt-2">
-                                    <input type="text" class="form-control" placeholder="Enter Vehicle Model"
-                                        id="vehicle-model">
+                                    <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="inputCarModel" id="inputCarModel">
                                 </div>
                             </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">See
-                            Maintenance Options</button>
-                    </div>
-                    </form>
-                      
-                </div>
->>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
+                            <div class="modal-footer">
+                                <input type="submit" value="See Maintenance Options" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">
+                            </div>
 
-                <div id="services-table-body">
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-    </div>
 
-    <script type="text/javascript" src="assets/js/main.js">
-    </script>
+        <!-- DIY VIDEOS MODAL -->
+        <div class="modal fade" id="DIY-modal" tabindex="-1" role="dialog" aria-labelledby="DIY videos" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">DIY(Do it Yourself)
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs&callback=initMap">
-    </script>
+                    <div class="modal-body">
+                        <iframe id="video-here"></iframe>
 
-=======
-        <footer id="footer">Best dang Car App on the Market!</footer>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Thank
+                                you come
+                                again
+                            </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- **********************************Map page content box start here *********************************************** -->
+        <div class="container" id="shops-near-you" style="display: none;">
+            <h1 class="sub-header">Services Near You</h1>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Google Maps</h3>
+                    <div id="map"></div>
+
+                </div>
+                <div class="col-sm-4" id="shop-list" data-blind="foreach: items.slice(0, 6)">
+
+                    <div id="services-table-body">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script type="text/javascript" src="assets/js/main.js">
         </script>
@@ -383,136 +200,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs&callback=initMap">
         </script>
 
-        <script type="text/javascript">
-
-            function showUserInputModal() {
-                $("#vehicle-info").modal('show');
-            }
-
-            $("#setVehicleInput").on("click", function() {
-
-                // capture user inputs, store to variables
-                var mileage = parseInt($("#mileageInput").val().trim());
-                var lastChange = parseInt($("#lastOilChange").val().trim());
-                var inputCarMake = $("#inputCarMake").val().trim();
-                var inputCarModel = $("#inputCarModel").val().trim();
-                localStorage.setItem('inputCarModel', inputCarModel);
-                inputCarModel = localStorage.getItem('inputCarModel');
-                localStorage.setItem('inputCarMake', inputCarMake);
-                inputCarMake = localStorage.getItem('inputCarMake');
-
-                if (mileage <= lastChange) {
-                    alert("Your current mileage can't be greater than the mileage of your last oil change...");
-                    return false;
-                }
-                if (isNaN(mileage) || isNaN(lastChange)) {
-                    alert("please enter a valid number for your current mileage and the mileage of your last oilchange");
-                    return false;
-                }
-                if (inputCarMake == "" || inputCarModel == "") {
-                    alert("please enter the make and model of your vehicle");
-                    return false;
-                }
-
-                // calculate miles until next oil change, based on the presumption that an oil change is needed every 5000 miles 
-                var nextChange = parseInt(lastChange) + parseInt("8000") - parseInt(mileage);
-
-                //set nextChange to local storage and then display above graph
-                localStorage.setItem('next-oil-change', nextChange);
-                var localNextChange = localStorage.getItem('next-oil-change');
-
-                // generate percent value of progress towards next oil change, take circumfrence of circle, multiply by percentage  (1 - miles until next change divided by 5000)
-                var percentage = 339.292 * parseFloat(1 - (nextChange / 8000));
-                console.log(percentage);
-
-                // setting percentage to local storage 
-                localStorage.setItem('vehicle-mileage-percentage', percentage);
-                var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
-                if (localNextChange < 0) {
-                    $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " needed an oil change " + -localNextChange + " miles ago!");
-                    // add percentage value to html element
-                    $('#graphValue').data('stroke-dashoffset', "0");
-
-                    // add percentage value to element's CSS
-                    $('#graphValue').css("stroke-dashoffset", "0");
-
-                    // hack to re-initiate keyframe animation 
-                    setTimeout(function() {
-                        $("#graphValue").removeClass("progress-value");
-
-                    }, 10);
-                    setTimeout(function() {
-                        $("#graphValue").addClass("progress-value");
-                    }, 15);
-
-                    //change stroke offset in CSS Animation keyframe to match percentage
-                    var KeyFrame = {
-                            init: function() {
-                                if (!KeyFrame.check) {
-                                    //get the left position
-                                    //  var pushLeft = $('.push').position().left;
-                                    //set the style and append to head
-                                    var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:0;}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
-                                    //so u don't keep appending style to head
-                                    KeyFrame.check = true;
-                                }
-                            }
-                        }
-                        // initiliaze keyframe
-                    KeyFrame.init();
-                } else {
-                    $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " has " + localNextChange + " miles until next oil change");
-                    // add percentage value to html element
-                    $('#graphValue').data('stroke-dashoffset', localPercentage);
-
-                    // add percentage value to element's CSS
-                    $('#graphValue').css("stroke-dashoffset", localPercentage);
-
-                    // hack to re-initiate keyframe animation 
-                    setTimeout(function() {
-                        $("#graphValue").removeClass("progress-value");
-
-                    }, 10);
-                    setTimeout(function() {
-                        $("#graphValue").addClass("progress-value");
-                    }, 15);
-
-                    //change stroke offset in CSS Animation keyframe to match percentage
-                    var KeyFrame = {
-                            init: function() {
-                                if (!KeyFrame.check) {
-                                    //get the left position
-                                    //  var pushLeft = $('.push').position().left;
-                                    //set the style and append to head
-                                    var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;}to {stroke-dashoffset:' + localPercentage + ';}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
-                                    //so u don't keep appending style to head
-                                    KeyFrame.check = true;
-                                }
-                            }
-                        }
-                        // initiliaze keyframe
-                    KeyFrame.init();
-                }
-
-                // setting the boolean value of vehicle details to true in local storage; upon page load, if this value is true, the onLoad modal will not display. See window onload function above.
-                localStorage.setItem('vehicle-details', true);
-                var userData = localStorage.getItem('vehicle-details');
-            });
-
-            // reset info button clears local storage and primes SVG animation to be fired again... need to keep working on this
-            $("#resetInfo").on("click", function() {
-                $("#graphValue").removeClass("progress-value");
-                localStorage.clear();
-                $('#graphValue').data("stroke-dashoffset", "");
-                $('#graphValue').css("stroke-dashoffset", "");
-                $("#mileageOutput").html("");
-
-            });
-        </script>
-      
-        <script type="text/javascript" src="assets/js/main.js">
-        </script>
->>>>>>> ffb4768a0a9f90d425ed533584fc5bed1f1cff28
 </body>
 
 </html>
