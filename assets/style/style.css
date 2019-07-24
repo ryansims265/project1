@@ -1,4 +1,3 @@
-
 .statusBoxHeader {
     background-color: black;
     color: white;
@@ -8,13 +7,12 @@
 }
 
 .statusBox {
-    background-color: darkred;
+    background-color: rgb(156, 0, 0);
     text-align: center;
     border: solid 5px darkslategray;
     border-radius: 8px;
     color: white;
     animation: 1s ease-out 0s 1 slideInFromRight;
-
 }
 
 body {
@@ -31,83 +29,85 @@ footer {
 }
 
 #content-wrap {
-  padding-bottom: 2.5rem;
-  /* Footer height */
+    padding-bottom: 2.5rem;
+    /* Footer height */
 }
 
 #footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
 }
 
 .btn {
-  margin: 10px;
+    margin: 10px;
 }
 
 .button1 {
-  border: 0.1em solid #FFFFFF;
-  font-family: 'poppins', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: rgba(0, 66, 110, 0.979);
-  text-align: center;
-  transition: all 0.2s;
-  cursor: pointer;
-  animation: 1s ease-out 0s 1 slideInFromLeft;
+    border: 0.1em solid #FFFFFF;
+    font-family: 'poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(0, 66, 110, 0.979);
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 input.button1:hover {
-  color: rgba(8, 139, 226, 0.979);
-  background-color: #FFFFFF;
+    color: rgba(8, 139, 226, 0.979);
+    background-color: #FFFFFF;
 }
 
 .navbar-brand {
-  animation: 1s ease-out 0s 1 slideInFromRight;
+    animation: 1s ease-out 0s 1 slideInFromRight;
 }
 
+
+/* GOOGLE MAPS MODAL STYLES */
+
 ul {
-  list-style-type: none;
-  padding: 10px;
+    list-style-type: none;
+    padding: 10px;
 }
 
 #places {
-  background-color: palegoldenrod;
+    background-color: palegoldenrod;
 }
 
 #map {
-  height: 500px;
-  width: 100%;
-  margin: 0px 5px;
+    height: 300px;
+    width: 100%;
+    margin: 0px 5px;
 }
+
+#services-modal-dialog {
+    overflow-y: initial;
+}
+
+#services-modal-body {
+    height: 400px;
+    overflow-y: auto;
+}
+
+
+/*end of google maps api styles */
 
 .sub-header {
-  border-bottom: 3px solid #dddddd;
-  font-size: 16;
-  color: #000000;
-  font-weight: bold;
-}
-
-#shops-near-you  {
-  padding: 10px;
-  font-size: 12px;
-  color: #000000;
-  background-color: #ffffff;
-  margin: auto;
-  position: relative;
-  width: 100%;
-  margin-top: 10px;
-  height: auto;
-  border: 3px solid #fffefe;
-  border-radius: 10px;
+    border-bottom: 3px solid #dddddd;
+    font-size: 16;
+    color: #000000;
+    font-weight: bold;
 }
 
 .headerDivider {
     border-left: 1px solid #0088ff;
-    border-right: 1px solid #003764;
+    border-right: 1px solid #0088ff;
     height: 50px;
 }
+
 
 /* animation keyframes */
 
@@ -129,6 +129,7 @@ ul {
     }
 }
 
+
 /* RADIAL GRAPH CSS */
 
 .flip-it {
@@ -143,63 +144,3 @@ ul {
     -webkit-animation: progress 3.5s normal;
     animation: progress 3.5s normal;
 }
-
-
-/* @-webkit-keyframes progress {
-    from {
-        stroke-dashoffset: 339.292;
-    }
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-@keyframes progress {
-    from {
-        stroke-dashoffset: 339.292;
-    }
-    to {
-        stroke-dashoffset: 0;
-    }
-} */
-
-
-/* MIA's CSS */
-
-ul {
-    list-style-type: none;
-    padding: 10px;
-}
-
-#places {
-    background-color: palegoldenrod;
-}
-
-#map {
-    height: 500px;
-    width: 100%;
-    margin: 0px 5px;
-}
-
-.sub-header {
-    border-bottom: 3px solid #dddddd;
-    font-size: 16;
-    color: #000000;
-    font-weight: bold;
-}
-
-#shops-near-you {
-    padding: 10px;
-    font-size: 12px;
-    color: #000000;
-    background-color: #ffffff;
-    margin: auto;
-    position: relative;
-    width: 100%;
-    margin-top: 10px;
-    height: auto;
-    border: 3px solid #fffefe;
-    border-radius: 10px;
-}
-
-Collapse

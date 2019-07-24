@@ -7,22 +7,6 @@ var google;
 
 var places = [];
 
-$(document).ready(function() {
-    $('#services-button').click(function() {
-        $('#shops-near-you').delay(2000).fadeIn(500);
-        $('#main-container').hide();
-    });
-});
-
-var places = [];
-
-$(document).ready(function() {
-    $('#services-button').click(function() {
-        $('#shops-near-you').delay(2000).fadeIn(500);
-        $('#main-container"').hide();
-
-    });
-});
 
 //First we need to create the user registration database 
 var firebaseConfig = {
@@ -254,8 +238,8 @@ $("#setVehicleInput").on("click", function() {
     lastChange = $("#lastOilChange").val();
     make = $("#vehicle-model").val();
     model = $("#vehicle-make").val();
-    // console.log(make);
-    // console.log(model);
+    console.log(make);
+    console.log(model);
 
     database.ref().set({
         make: make,
@@ -265,12 +249,12 @@ $("#setVehicleInput").on("click", function() {
     });
 
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + model + "_" + make + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
-        // console.log(queryURL);
+    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        // console.log(response);
+        console.log(response);
         var videoid = response.items[1].id.videoId;
         document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
 
@@ -279,7 +263,6 @@ $("#setVehicleInput").on("click", function() {
 
 //MAPS API 
 $('#services-button').click(function() {
-    $("#shops-near-you").show();
     //get the user location from storage
     var location = getUserLocation();
     //call the api with the user specific location 
