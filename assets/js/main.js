@@ -1,7 +1,7 @@
-var make;
-var model;
-var mileage;
-var lastChange;
+var make = "";
+var model = "";
+var mileage = "";
+var lastChange = "";
 var userData;
 var google;
 
@@ -35,8 +35,7 @@ $(window).on('load', function() {
 
     // retrieve local session boolean
     var userData = localStorage.getItem('vehicle-details');
-    var inputCarModel = localStorage.getItem('inputCarModel');
-    var inputCarMake = localStorage.getItem('inputCarMake');
+
 
     // if there is no local session data, display vehicle input modal 
     if (userData == null) {
@@ -45,6 +44,10 @@ $(window).on('load', function() {
         // retrieve local storage data 
         var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
         var localNextChange = localStorage.getItem('next-oil-change');
+        var inputCarModel = localStorage.getItem('inputCarModel');
+        var inputCarMake = localStorage.getItem('inputCarMake');
+
+
 
         // render miles until next change in div 
         if (localNextChange < 0) {
@@ -111,8 +114,7 @@ $(window).on('load', function() {
                 // initiliaze keyframe
             KeyFrame.init();
         }
-        // running the youtube API 
-        youTubeAPI();
+
     }
 });
 
@@ -223,9 +225,6 @@ $("#setVehicleInput").on("click", function() {
     // setting the boolean value of vehicle details to true in local storage; upon page load, if this value is true, the onLoad modal will not display. See window onload function above.
     localStorage.setItem('vehicle-details', true);
     var userData = localStorage.getItem('vehicle-details');
-
-    // running the youtube API 
-    youTubeAPI();
 });
 
 // reset info button clears local storage and primes SVG animation to be fired again.
@@ -258,6 +257,10 @@ function youTubeAPI() {
         document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
     });
 }
+
+$("#videos-button").click(function() {
+    youTubeAPI();
+});
 
 //MAPS API 
 $('#services-button').click(function() {
