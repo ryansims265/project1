@@ -9,7 +9,7 @@ var places = [];
 $(document).ready(function() {
     $('#services-button').click(function() {
         $('#shops-near-you').delay(2000).fadeIn(500);
-        $('#content-wrap').hide();
+        $('#main-container').hide();
     });
 });
 
