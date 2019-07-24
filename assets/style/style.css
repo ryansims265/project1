@@ -144,3 +144,17 @@ ul {
     -webkit-animation: progress 3.5s normal;
     animation: progress 3.5s normal;
 }
+
+
+/* repsonsive design by Josh */
+
+@media (max-width: 575.98px) {
+    .buttonGroup {
+        max-width: 270px;
+    }
+    .buttonCol {
+        padding-top: 10px;
+    }
+}
+
+;

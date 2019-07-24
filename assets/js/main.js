@@ -1,3 +1,4 @@
+// declaring global-ish variables
 var make = "";
 var model = "";
 var mileage = "";
@@ -8,7 +9,7 @@ var google;
 var places = [];
 
 
-//First we need to create the user registration database 
+// setting up firebase configuration, which pushes and pulls data for the youtube API. Later, we'll use this firebase project for setting up User logins
 var firebaseConfig = {
     apiKey: "AIzaSyCBrNS7nMK1bZWb-xwKrLlh9ESVNQqhzls",
     authDomain: "car-med.firebaseapp.com",
@@ -23,12 +24,10 @@ var database = firebase.database();
 
 database.ref().set({
     make: make,
-    model: model,
-    lastChange: lastChange,
-    mileage: mileage,
+    model: model
 });
 
-
+// Window on load function that checks for user location, checks for previous session data in local storage, renders the radial graphic animation and renders text in the vehicle information container
 $(window).on('load', function() {
 
     checkUserLocation();
@@ -46,8 +45,6 @@ $(window).on('load', function() {
         var localNextChange = localStorage.getItem('next-oil-change');
         var inputCarModel = localStorage.getItem('inputCarModel');
         var inputCarMake = localStorage.getItem('inputCarMake');
-
-
 
         // render miles until next change in div 
         if (localNextChange < 0) {
@@ -118,6 +115,7 @@ $(window).on('load', function() {
     }
 });
 
+// function for showing modal input after reset button is clicked
 function showUserInputModal() {
     $("#vehicle-info").modal('show');
 }
