@@ -236,23 +236,29 @@ $("#resetInfo").on("click", function() {
 
 //YOUTUBE API 
 function youTubeAPI() {
-    make = localStorage.getItem('inputCarMake')
-    model = localStorage.getItem('inputCarModel')
+    make = localStorage.getItem('inputCarMake');
+    model = localStorage.getItem('inputCarModel');
 
     database.ref().set({
         make: make,
         model: model
     });
 
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + make + "_" + model + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + make + "_" + model + "&key=AIzaSyAawfafx_DjwdqFNMSN3qsOKHZgSoLCpjc"
     console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
         console.log(response);
-        var videoid = response.items[1].id.videoId;
-        document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
+        var videoid1 = response.items[1].id.videoId;
+        document.getElementById("video-here1").src = "https://www.youtube.com/embed/" + videoid1;
+
+        var videoid2 = response.items[2].id.videoId;
+        document.getElementById("video-here2").src = "https://www.youtube.com/embed/" + videoid2;
+
+        var videoid3 = response.items[3].id.videoId;
+        document.getElementById("video-here3").src = "https://www.youtube.com/embed/" + videoid3;
     });
 }
 
