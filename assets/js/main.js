@@ -1,7 +1,7 @@
-var make = "";
-var model = "";
-var mileage = "";
-var lastChange = "";
+var make;
+var model;
+var mileage;
+var lastChange;
 var userData;
 var google;
 
