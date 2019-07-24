@@ -111,6 +111,8 @@ $(window).on('load', function() {
                 // initiliaze keyframe
             KeyFrame.init();
         }
+        // running the youtube API 
+        youTubeAPI();
     }
 });
 
@@ -221,6 +223,9 @@ $("#setVehicleInput").on("click", function() {
     // setting the boolean value of vehicle details to true in local storage; upon page load, if this value is true, the onLoad modal will not display. See window onload function above.
     localStorage.setItem('vehicle-details', true);
     var userData = localStorage.getItem('vehicle-details');
+
+    // running the youtube API 
+    youTubeAPI();
 });
 
 // reset info button clears local storage and primes SVG animation to be fired again.
@@ -233,22 +238,16 @@ $("#resetInfo").on("click", function() {
 });
 
 //YOUTUBE API 
-$("#setVehicleInput").on("click", function() {
-    mileage = $("#mileageInput").val();
-    lastChange = $("#lastOilChange").val();
-    make = $("#vehicle-model").val();
-    model = $("#vehicle-make").val();
-    console.log(make);
-    console.log(model);
+function youTubeAPI() {
+    make = localStorage.getItem('inputCarMake')
+    model = localStorage.getItem('inputCarModel')
 
     database.ref().set({
         make: make,
-        model: model,
-        lastChange: lastChange,
-        mileage: mileage,
+        model: model
     });
 
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + model + "_" + make + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + make + "_" + model + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
     console.log(queryURL);
     $.ajax({
         url: queryURL,
@@ -257,9 +256,8 @@ $("#setVehicleInput").on("click", function() {
         console.log(response);
         var videoid = response.items[1].id.videoId;
         document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
-
     });
-});
+}
 
 //MAPS API 
 $('#services-button').click(function() {
@@ -297,7 +295,7 @@ $('#services-button').click(function() {
 
         initMap();
     });
-})
+});
 
 function checkUserLocation() {
     //try to get both the latitude and longitude from storage
