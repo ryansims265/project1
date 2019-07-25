@@ -16,7 +16,7 @@ If the user clicks "Do Myself" then they are given articles and videos via WikiH
 
 If the user clicks "Have it Done" the Google Maps API is called for the top rated car shops in the area and can text you the address
 
-NEW TECHNOLOGY USED:
+TECHNOLOGY USED:
 
   DATABASE 
   -- Firebase

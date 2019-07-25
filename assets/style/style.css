@@ -19,7 +19,7 @@
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: rgba(156, 4, 4, 0.5) 0px 3px 3px;
+    text-shadow: rgba(255, 0, 0, 0.5) 0px 3px 3px;
     font-size: 40px;
 
 
@@ -36,6 +36,7 @@ p {
 .statusBoxHeader {
     background-color: rgb(30, 30, 35);
     color: white;
+
     text-align: center;
     border-radius: 8px;
     font-family: 'Roboto', sans-serif;
@@ -46,9 +47,13 @@ p {
     text-align: center;
     border: none;
     border-radius: 8px;
-    color: white;
+    color: whitesmoke;
     animation: 1s ease-out 0s 1 slideInFromRight;
     box-shadow: 7px 7px 4px rgb(3, 0, 39);
+}
+
+#mileageOutput {
+    color:whitesmoke;
 }
 
 body {
@@ -65,13 +70,13 @@ body {
 footer {
     background-color: #000000;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: rgb(165, 165, 165);
     font-family: 'Roboto', sans-serif;
 }
 
 #content-wrap {
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
     /* Footer height */
 }
 
@@ -79,7 +84,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 2rem;
 }
 
 .btn {
@@ -87,11 +92,13 @@ footer {
 }
 
 .button1 {
+
     background: rgb(156, 0, 0);
     color: #fff;
     border: none;
     position: relative;
     height: 60px;
+
     width: 200px;
     font-size: 1em;
     ;
@@ -135,8 +142,10 @@ footer {
 }
 
 input.button1:hover {
+
     color: rgba(9, 16, 20, 0.979);
     background-color: #FFFFFF;
+
 }
 
 .navbar-brand {
@@ -200,9 +209,10 @@ li {
     border-left: 1px solid rgb(156, 0, 0);
     border-right: 1px solid rgb(156, 0, 0);
     height: 50px;
+
 }
 
-
+s
 /* animation keyframes */
 
 @keyframes slideInFromLeft {
@@ -239,6 +249,8 @@ li {
     /*need to select this*/
     -webkit-animation: progress 3.5s normal;
     animation: progress 3.5s normal;
+    -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+    animation-fill-mode: forwards;
 }
 
 
