@@ -6,19 +6,25 @@
     <title>Car Med</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="assets/style/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="assets/style/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/style/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
 
     <!-- TOP BAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" id="about" style="color:whitesmoke;"><img src="assets/car_logo.png" style="width:65px;height:auto;text-align:center;" /><br>CarMed</a>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" id="logo" style="color:whitesmoke;"><img src="assets/car_logo.png"
+                style="width:65px;height:auto;text-align:center;"/><br>CarMed</a>
     </nav>
 
     <!-- CONTENT WRAP FOR STICKEY FOOTER -->
@@ -29,13 +35,13 @@
                 <div class="row mt-5">
                     <div class="col col-xs-10 col-sm-6 col-md-6 col-lg-3" style="margin:0 auto;">
                         <div class="container statusBox">
-                            <h6 class="statusBoxHeader p-1">Oil Change</h6>
+                            <h6 class="statusBoxHeader p-1">OIL CHANGE</h6>
                             <p id="mileageOutput"></p>
                             <svg width="120" height="120" viewBox="0 0 120 120" class="flip-it">
-                            <circle cx="60" cy="60" r="54" fill="none" stroke="#A9A9A9" stroke-width="12" />
-                            <circle id="graphValue" cx="60" cy="60" r="54" fill="none" stroke="#ff8400" stroke-width="12"
-                                stroke-dasharray="339.292" stroke-dashoffset="339.292"/>
-                        </svg>
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#A9A9A9" stroke-width="12" />
+                                <circle id="graphValue" cx="60" cy="60" r="54" fill="none" stroke="#ff8400"
+                                    stroke-width="12" stroke-dasharray="339.292" stroke-dashoffset="339.292" />
+                            </svg>
                             <br>
                             <br>
                         </div>
@@ -48,25 +54,28 @@
 
                         <!-- button -->
                         <div class="col buttonCol" style="margin:auto; text-align: center;">
-                            <button id="videos-button" type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#DIY-modal">
-                                            DIY videos
-                                        </button>
+                            <button id="videos-button" type="button" class="btn btn-secondary button1"
+                                data-toggle="modal" data-target="#DIY-modal">
+                                DIY VIDEOS
+                            </button>
                         </div>
 
                         <!-- button -->
                         <div class="col buttonCol" style="margin:auto; text-align: center;">
                             <div class="headerDivider">
-                                <button id="services-button" type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#shops-near-you">
-                                        Services near you
-                                    </button>
+                                <button id="services-button" type="button" class="btn btn-secondary button1"
+                                    data-toggle="modal" data-target="#shops-near-you">
+                                    SERVICES NEAR YOU
+                                </button>
                             </div>
                         </div>
 
                         <!-- button -->
                         <div class="col buttonCol" style="margin:auto; text-align: center;">
-                            <button type="button" class="btn btn-secondary button1" data-toggle="modal" data-target="#vehicle-info" id="resetInfo">
-                                        Reset info
-                                    </button>
+                            <button type="button" class="btn btn-secondary button1" data-toggle="modal"
+                                data-target="#vehicle-info" id="resetInfo">
+                               ADD CAR INFO
+                            </button>
                         </div>
 
 
@@ -77,31 +86,35 @@
 
         </div>
     </div>
-    <footer id="footer">Best dang Car App on the Market!</footer>
+    <footer id="footer">Best Car App on the Market!</footer>
 
     <!-- INTRODUCTION MODAL  -->
-    <div class="modal fade" id="intro-modal" tabindex="-1" role="dialog" aria-labelledby="Introduction" aria-hidden="true">
+    <div class="modal fade" id="intro-modal" tabindex="-1" role="dialog" aria-labelledby="Introduction"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">WELCOME TO CAR-MED!
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body" id="intro-modal">
 
-                    <p> Not sure when you should get your next oil change? No worries, Car-Med has got your back. Enter you vehicle details and we'll direct you to resources for DIY self-maintanence or services near you.</p>
+                    <p> Not sure when you should get your next oil change? No worries, Car-Med has got your back. Enter
+                        you vehicle details and we'll direct you to resources for DIY self-maintanence or services near
+                        you.</p>
 
 
                 </div>
                 <div class="col" style="margin:0 auto; text-align: center;">
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="showUserInputModal()">OK, got it!
-                                </button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            onclick="showUserInputModal()">OK, got it!
+                        </button>
 
                     </div>
                 </div>
@@ -110,38 +123,44 @@
     </div>
 
     <!-- USER INPUT MODAL  -->
-    <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="enter vehicle details" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="vehicle-info" tabindex="-1" role="dialog" aria-labelledby="enter vehicle details"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document" id="vehicle-detail-modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabelTwo">Enter Vehicle Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form name="userInput" id="userInputForm">
                         <div class="form-row">
                             <div class="col">
-                                <input name="mileageInput" type="number" min="1" step="1" class="form-control" placeholder="Enter Current Mileage" id="mileageInput">
+                                <input name="mileageInput" type="number" min="1" step="1" class="form-control"
+                                    placeholder="Enter Current Mileage" id="mileageInput">
                             </div>
 
                             <div class="col">
-                                <input name="lastOilChange" type="number" min="1" step="1" class="form-control" placeholder="Enter Last Oil Change" id="lastOilChange">
+                                <input name="lastOilChange" type="number" min="1" step="1" class="form-control"
+                                    placeholder="Enter Last Oil Change" id="lastOilChange">
                             </div>
                         </div>
                         <div class="form-row">
 
                             <div class="col mt-2">
-                                <input type="text" class="form-control" placeholder="Enter Vehicle Make" name="inputCarMake" id="inputCarMake">
+                                <input type="text" class="form-control" placeholder="Enter Vehicle Make"
+                                    name="inputCarMake" id="inputCarMake">
                             </div>
 
                             <div class="col mt-2">
-                                <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="inputCarModel" id="inputCarModel">
+                                <input type="text" class="form-control" placeholder="Enter Vehicle Model"
+                                    name="inputCarModel" id="inputCarModel">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" value="See Maintenance Options" class="btn btn-danger" data-dismiss="modal" id="setVehicleInput">
+                            <input type="submit" value="See Maintenance Options" class="btn btn-danger"
+                                data-dismiss="modal" id="setVehicleInput">
                         </div>
 
                     </form>
@@ -153,51 +172,61 @@
 
     <!-- DIY VIDEOS MODAL -->
     <div class="modal fade" id="DIY-modal" tabindex="-1" role="dialog" aria-labelledby="DIY videos" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document" id="video-modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">DIY(Do it Yourself)
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
 
-                <div class="modal-body">
-                    <iframe id="video-here1" style="width:100%; height:350px;"></iframe>
-                    <iframe id="video-here2" style="width:100%; height:350px;"></iframe>
-                    <iframe id="video-here3" style="width:100%; height:350px;"></iframe>
+                <div class="modal-body" id="diy-section">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <iframe id="video-here1" style="width:100%; height:350px;"></iframe>
+                        </div>
+                        <div class="col-lg-4">
+                            <iframe id="video-here2" style="width:100%; height:350px;"></iframe>
+                        </div>
+                        <div class="col-lg-4">
+                            <iframe id="video-here3" style="width:100%; height:350px;"></iframe>
+                        </div>
 
-
+                    </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Exit
-                            </button>
+                    </button>
 
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade bd-example-modal-lg" id="shops-near-you" tabindex="-1" role="dialog" aria-labelledby="Shops near you" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="shops-near-you" tabindex="-1" role="dialog"
+        aria-labelledby="Shops near you" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document" id="services-modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Services Near You
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
 
                 <div class="modal-body" id="services-modal-body">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h3>Google Maps</h3>
+
                             <div id="map"></div>
                         </div>
                         <div class="col-sm-4" id="shop-list">
+                            <div id="google-reviews"></div>
+
 
                             <div id="services-table-body">
                             </div>
@@ -206,12 +235,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Exit
-                                </button>
+                    </button>
 
                 </div>
             </div>
         </div>
     </div>
+    <script src="google-places.js"></script>
+    <link rel="stylesheet" href="google-places.css">
 
     <script type="text/javascript" src="assets/js/main.js">
     </script>
