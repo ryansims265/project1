@@ -1,3 +1,4 @@
+// declaring global-ish variables
 var make = "";
 var model = "";
 var mileage = "";
@@ -7,24 +8,8 @@ var google;
 
 var places = [];
 
-$(document).ready(function() {
-    $('#services-button').click(function() {
-        $('#shops-near-you').delay(2000).fadeIn(500);
-        $('#main-container').hide();
-    });
-});
 
-var places = [];
-
-$(document).ready(function() {
-    $('#services-button').click(function() {
-        $('#shops-near-you').delay(2000).fadeIn(500);
-        $('#main-container"').hide();
-
-    });
-});
-
-//First we need to create the user registration database 
+// setting up firebase configuration, which pushes and pulls data for the youtube API. Later, we'll use this firebase project for setting up User logins
 var firebaseConfig = {
     apiKey: "AIzaSyCBrNS7nMK1bZWb-xwKrLlh9ESVNQqhzls",
     authDomain: "car-med.firebaseapp.com",
@@ -39,20 +24,17 @@ var database = firebase.database();
 
 database.ref().set({
     make: make,
-    model: model,
-    lastChange: lastChange,
-    mileage: mileage,
+    model: model
 });
 
-
+// Window on load function that checks for user location, checks for previous session data in local storage, renders the radial graphic animation and renders text in the vehicle information container
 $(window).on('load', function() {
 
     checkUserLocation();
 
     // retrieve local session boolean
     var userData = localStorage.getItem('vehicle-details');
-    var inputCarModel = localStorage.getItem('inputCarModel');
-    var inputCarMake = localStorage.getItem('inputCarMake');
+
 
     // if there is no local session data, display vehicle input modal 
     if (userData == null) {
@@ -61,6 +43,8 @@ $(window).on('load', function() {
         // retrieve local storage data 
         var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
         var localNextChange = localStorage.getItem('next-oil-change');
+        var inputCarModel = localStorage.getItem('inputCarModel');
+        var inputCarMake = localStorage.getItem('inputCarMake');
 
         // render miles until next change in div 
         if (localNextChange < 0) {
@@ -127,9 +111,11 @@ $(window).on('load', function() {
                 // initiliaze keyframe
             KeyFrame.init();
         }
+
     }
 });
 
+// function for showing modal input after reset button is clicked
 function showUserInputModal() {
     $("#vehicle-info").modal('show');
 }
@@ -249,49 +235,51 @@ $("#resetInfo").on("click", function() {
 });
 
 //YOUTUBE API 
-$("#setVehicleInput").on("click", function() {
-    mileage = $("#mileageInput").val();
-    lastChange = $("#lastOilChange").val();
-    make = $("#vehicle-model").val();
-    model = $("#vehicle-make").val();
-    // console.log(make);
-    // console.log(model);
+function youTubeAPI() {
+    make = localStorage.getItem('inputCarMake');
+    model = localStorage.getItem('inputCarModel');
 
     database.ref().set({
         make: make,
-        model: model,
-        lastChange: lastChange,
-        mileage: mileage,
+        model: model
     });
 
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + model + "_" + make + "&key=AIzaSyAuxtQuHOJVKwjvv_6HnLgJLCS_nZUhUfQ"
-        // console.log(queryURL);
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=oil_change_" + make + "_" + model + "&key=AIzaSyAawfafx_DjwdqFNMSN3qsOKHZgSoLCpjc"
+    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        // console.log(response);
-        var videoid = response.items[1].id.videoId;
-        document.getElementById("video-here").src = "https://www.youtube.com/embed/" + videoid;
+        console.log(response);
+        var videoid1 = response.items[1].id.videoId;
+        document.getElementById("video-here1").src = "https://www.youtube.com/embed/" + videoid1;
 
+        var videoid2 = response.items[2].id.videoId;
+        document.getElementById("video-here2").src = "https://www.youtube.com/embed/" + videoid2;
+
+        var videoid3 = response.items[3].id.videoId;
+        document.getElementById("video-here3").src = "https://www.youtube.com/embed/" + videoid3;
     });
+}
+
+$("#videos-button").click(function() {
+    youTubeAPI();
 });
 
 //MAPS API 
 $('#services-button').click(function() {
-    $("#shops-near-you").show();
     //get the user location from storage
     var location = getUserLocation();
     //call the api with the user specific location 
     var proxyurl = "https://cors-anywhere.herokuapp.com/";
-    var mapsurl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&rankby=distance&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs`;
+    var mapsurl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&rankby=distance&fields=name,photo,icon,website,opening_hour,formated_phone-number,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs`;
     $.ajax({
         url: proxyurl + mapsurl,
         method: "GET"
     }).then(function(response) {
         var apiResults = response.results;
         console.log(apiResults);
-        var limitedResults = apiResults.slice(0, 6);
+        var limitedResults = apiResults.slice(0, 5);
         //get the table body and save it a JQuery object
         var servicesTableBody = $('#services-table-body');
         //loop through the result 
@@ -299,13 +287,16 @@ $('#services-button').click(function() {
             places.push({
                 name: result.name,
                 lat: result.geometry.location.lat,
-                lng: result.geometry.location.lng
+                lng: result.geometry.location.lng,
+               
             });
             //create a table row for each result
             var tableRow = `<ul>
-          <li class="serviceRating">${"Ratings: " + result.rating}<br>
-          <span class="serviceName">${result.name}<br>
-          <span class="serviceAddress">${result.vicinity}</span></li>
+          <li>
+          <span class="serviceName">${result.name}</span><br>
+          <span class="serviceRating">${"Ratings: " + result.rating}</span><br>
+          <span class="serviceAddress">${result.vicinity}</span>
+          </li>
          
           </ul>`;
             //add row to table body
@@ -314,7 +305,7 @@ $('#services-button').click(function() {
 
         initMap();
     });
-})
+});
 
 function checkUserLocation() {
     //try to get both the latitude and longitude from storage
@@ -360,19 +351,24 @@ function getUserLocation() {
 function initMap() {
     var location = getUserLocation();
     var map = new google.maps.Map(document.getElementById('map'), { zoom: 12, center: location });
-    var infowindow = new google.maps.InfoWindow({});
+    var infowindow = new google.maps.InfoWindow({
+       
+
+    });
     var marker, index;
     for (var index = 0; index < places.length; index++) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(places[index].lat, places[index].lng),
             map: map,
-            title: places[index].name
+            title: places[index].name,
+            
+            
         });
-        google.maps.event.addListener(marker, 'click', (function(marker, index) {
+        google.maps.event.addListener(marker, 'click', (function(marker) {
             return function() {
-                infowindow.setContent(places[index]);
-                infowindow.open(map, marker);
+                // infowindow.setContent(places[index]);
+                infowindow.open(map);
             }
-        })(marker, index));
+        })(marker));
     }
 }

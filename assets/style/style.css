@@ -1,113 +1,189 @@
+.navbar {
+    background-color: rgb(30, 30, 35);
+    padding: 0px 10px;
+    margin: 0px;
+    
+}
+#logo {
+background-color: #000000;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(156, 4, 4, 0.5) 0px 3px 3px;
+    font-size: 40px;
+   
+    
+}
+.modal-header {
+}
+#intro-modal {}
 
+p {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(3, 0, 14);
+    
+}
 .statusBoxHeader {
-    background-color: black;
+    background-color:  rgb(30, 30, 35);
     color: white;
     text-align: center;
-    border: black 1px solid;
     border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .statusBox {
-    background-color: darkred;
+    background-color: rgb(156, 0, 0);
     text-align: center;
-    border: solid 5px darkslategray;
+    border: none;
     border-radius: 8px;
     color: white;
     animation: 1s ease-out 0s 1 slideInFromRight;
-
+    box-shadow: 7px 7px 4px rgb(3, 0, 39);
 }
 
 body {
-    background-color: darkgray;
+    background-color: rgb(204, 204, 204);
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 
 footer {
-    background-color: black;
-    color: white;
+    background-color:rgb(30, 30, 35);
     text-align: center;
+    font-size: 12px;
+    color: rgb(165, 165, 165);
+    font-family: 'Roboto', sans-serif;
 }
 
 #content-wrap {
-  padding-bottom: 2.5rem;
-  /* Footer height */
+    padding-bottom: 2rem;
+    /* Footer height */
 }
 
 #footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
 }
 
 .btn {
-  margin: 10px;
+    margin: 10px;
 }
 
 .button1 {
-  border: 0.1em solid #FFFFFF;
-  font-family: 'poppins', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: rgba(0, 66, 110, 0.979);
-  text-align: center;
-  transition: all 0.2s;
-  cursor: pointer;
-  animation: 1s ease-out 0s 1 slideInFromLeft;
+    background:rgb(156, 0, 0);
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    width: 200px;
+    font-size:1em;;
+    padding:0 1em;
+    cursor:pointer;
+    transition:800ms ease all;
+    box-shadow: 7px 7px 4px rgb(3, 0, 39);
+    outline:none;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+.button1:hover{
+    background:#fff;
+    color:rgb(156, 0, 0);
+  }
+  .button1:before,.button1:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: rgb(156, 0, 0);
+    transition:400ms ease all;
+  }
+  .button1:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+    box-shadow: 7px 7px 4px rgb(3, 0, 39);
+  }
+  .button1:hover:before,.button1:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
 input.button1:hover {
-  color: rgba(8, 139, 226, 0.979);
-  background-color: #FFFFFF;
+    color: rgba(8, 139, 226, 0.979);
+    background-color: #FFFFFF;
 }
 
 .navbar-brand {
-  animation: 1s ease-out 0s 1 slideInFromRight;
+    animation: 1s ease-out 0s 1 slideInFromRight;
 }
+
+
+/* GOOGLE MAPS MODAL STYLES */
 
 ul {
-  list-style-type: none;
-  padding: 10px;
+    list-style-type: none;
+    padding: 0px;
+    margin: 20px 0px;
 }
 
-#places {
-  background-color: palegoldenrod;
+li {
+    font-size: 12px;
+
+
 }
+
 
 #map {
-  height: 500px;
-  width: 100%;
-  margin: 0px 5px;
+    height: 400px;
+    width: 100%;
+    margin: 20px 10px 0px;
 }
+
+#services-modal-dialog {
+    overflow-y: initial;
+}
+
+#services-modal-body {
+    height: 400px;
+    overflow-y: auto;
+}
+
+#diy-section {
+    margin: auto;
+}
+
+.serviceRating {
+    color: #c05a06;
+}
+
+.serviceName {
+    font-size: 16px;
+    color: #000000;
+}
+
+/*end of google maps api styles */
 
 .sub-header {
-  border-bottom: 3px solid #dddddd;
-  font-size: 16;
-  color: #000000;
-  font-weight: bold;
-}
-
-#shops-near-you  {
-  padding: 10px;
-  font-size: 12px;
-  color: #000000;
-  background-color: #ffffff;
-  margin: auto;
-  position: relative;
-  width: 100%;
-  margin-top: 10px;
-  height: auto;
-  border: 3px solid #fffefe;
-  border-radius: 10px;
+    border-bottom: 3px solid #dddddd;
+    font-size: 16;
+    color: #000000;
+    font-weight: bold;
 }
 
 .headerDivider {
-    border-left: 1px solid #0088ff;
-    border-right: 1px solid #003764;
+    border-left: 1px solid rgb(3, 0, 39);
+    border-right: 1px solid rgb(3, 0, 39);
     height: 50px;
 }
+
 
 /* animation keyframes */
 
@@ -115,6 +191,7 @@ ul {
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -124,10 +201,12 @@ ul {
     0% {
         transform: translateX(100%);
     }
+
     100% {
         transform: translateX(0);
     }
 }
+
 
 /* RADIAL GRAPH CSS */
 
@@ -145,59 +224,39 @@ ul {
 }
 
 
-/* @-webkit-keyframes progress {
-    from {
-        stroke-dashoffset: 339.292;
+/* repsonsive design by Josh */
+
+@media (max-width: 575.98px) {
+    .buttonGroup {
+        max-width: 270px;
     }
-    to {
-        stroke-dashoffset: 0;
+
+    .buttonCol {
+        padding-top: 10px;
     }
 }
 
-@keyframes progress {
-    from {
-        stroke-dashoffset: 339.292;
+@media (min-width: 576px) {
+    #video-modal-dialog {
+        max-width: 900px;
+        margin: 2rem auto;
+        
     }
-    to {
-        stroke-dashoffset: 0;
+}
+
+@media (min-width: 576px) {
+    #services-modal-dialog {
+        max-width: 900px;
+        margin: 2rem auto;
+        border-radius: 5px;
     }
-} */
-
-
-/* MIA's CSS */
-
-ul {
-    list-style-type: none;
-    padding: 10px;
 }
 
-#places {
-    background-color: palegoldenrod;
-}
 
-#map {
-    height: 500px;
-    width: 100%;
-    margin: 0px 5px;
-}
-
-.sub-header {
-    border-bottom: 3px solid #dddddd;
-    font-size: 16;
-    color: #000000;
-    font-weight: bold;
-}
-
-#shops-near-you {
-    padding: 10px;
-    font-size: 12px;
-    color: #000000;
-    background-color: #ffffff;
-    margin: auto;
-    position: relative;
-    width: 100%;
-    margin-top: 10px;
-    height: auto;
-    border: 3px solid #fffefe;
-    border-radius: 10px;
+@media (min-width: 576px) {
+    #vehicle-detail-modal {
+        max-width: 600px;
+        margin: 2rem auto;
+        height: 400px;
+    }
 }
