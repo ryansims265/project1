@@ -1,32 +1,42 @@
 .navbar {
-    background-color: rgb(30, 30, 35);
-    padding: 0px 10px;
-    margin: 0px;
-    
+    background-image: url(assets/images/blackcar-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #000000;
+    background-color: rgb(2, 2, 2);
+    /* padding: 0px; */
+    /* margin: 0px; */
+
 }
+
+.navbar-brand {
+    display: inline-block;
+}
+
 #logo {
-background-color: #000000;
+    background-color: #000000;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
     text-shadow: rgba(255, 0, 0, 0.5) 0px 3px 3px;
     font-size: 40px;
-   
-    
+
+
 }
-.modal-header {
-}
-#intro-modal {}
+
+
 
 p {
     font-family: 'Roboto', sans-serif;
     color: rgb(3, 0, 14);
-    
+
 }
+
 .statusBoxHeader {
-    background-color:  rgb(30, 30, 35);
-    color: whitesmoke;
+    background-color: rgb(30, 30, 35);
+    color: white;
+
     text-align: center;
     border-radius: 8px;
     font-family: 'Roboto', sans-serif;
@@ -47,7 +57,10 @@ p {
 }
 
 body {
-    background-color: rgb(204, 204, 204);
+    background-image: url(/Users/msheriff/project1/assets/images/blackred2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-color: rgb(204, 204, 204); */
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
@@ -55,7 +68,7 @@ body {
 }
 
 footer {
-    background-color:rgb(30, 30, 35);
+    background-color: #000000;
     text-align: center;
     font-size: 14px;
     color: rgb(165, 165, 165);
@@ -79,50 +92,60 @@ footer {
 }
 
 .button1 {
-    background:rgb(156, 0, 0);
-    color:whitesmoke;
-    border:none;
-    position:relative;
-    height:60px;
+
+    background: rgb(156, 0, 0);
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 60px;
+
     width: 200px;
-    font-size:1em;;
-    padding:0 1em;
-    cursor:pointer;
-    transition:800ms ease all;
+    font-size: 1em;
+    ;
+    padding: 0 1em;
+    cursor: pointer;
+    transition: 800ms ease all;
     box-shadow: 7px 7px 4px rgb(3, 0, 39);
-    outline:none;
+    outline: none;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
-.button1:hover{
-    background:whitesmoke;
-    color:rgb(156, 0, 0);
-  }
-  .button1:before,.button1:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
+.button1:hover {
+    background: #fff;
+    color: rgb(156, 0, 0);
+}
+
+.button1:before,
+.button1:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
     background: rgb(156, 0, 0);
-    transition:400ms ease all;
-  }
-  .button1:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
+    transition: 400ms ease all;
+}
+
+.button1:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
     box-shadow: 7px 7px 4px rgb(3, 0, 39);
-  }
-  .button1:hover:before,.button1:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
+}
+
+.button1:hover:before,
+.button1:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
 
 input.button1:hover {
-    color: rgba(8, 139, 226, 0.979);
-    background-color: whitesmoke;
+
+    color: rgba(9, 16, 20, 0.979);
+    background-color: #FFFFFF;
+
 }
 
 .navbar-brand {
@@ -183,8 +206,10 @@ li {
 }
 
 .headerDivider {
-    border-left: 1px solid rgb(0, 44, 73);
-    border-right: 1px solid rgb(0, 44, 73);
+    border-left: 1px solid rgb(156, 0, 0);
+    border-right: 1px solid rgb(156, 0, 0);
+    height: 50px;
+
 }
 
 s
@@ -245,7 +270,7 @@ s
     #video-modal-dialog {
         max-width: 900px;
         margin: 2rem auto;
-        
+
     }
 }
 
