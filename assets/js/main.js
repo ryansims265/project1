@@ -71,7 +71,7 @@ $(window).on('load', function() {
                             //get the left position
                             //  var pushLeft = $('.push').position().left;
                             //set the style and append to head
-                            var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;stroke:green;}to {stroke-dashoffset:0;rgb(255, 0, 0);}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
+                            var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;stroke:green;}to {stroke-dashoffset:0;stroke:rgb(255, 0, 0);}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
                             //so u don't keep appending style to head
                             KeyFrame.check = true;
                         }
