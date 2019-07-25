@@ -15,3 +15,30 @@ When the user clicks the notification they are brought into the platform and giv
 If the user clicks "Do Myself" then they are given articles and videos via WikiHow API and Youtube API on how to complete the task 
 
 If the user clicks "Have it Done" the Google Maps API is called for the top rated car shops in the area and can text you the address
+
+TECHNOLOGY USED:
+
+  DATABASE 
+  -- Firebase
+
+  API's
+  -- Google maps
+  -- Youtube
+
+  FRONT-END
+  -- Bootstrap
+  -- Modal windows
+  -- SVG Graphics
+  -- Keyframe Animations
+
+  IMPLEMENTED CONCEPTS
+  -- User input validation 
+  -- AJAX
+  -- Local session data storage and retrieval
+  -- Responsive design
+  
+ FUTURE FEATURES 
+ - User login system with database
+ - Other maintanence items such as tire rotation, brake replacements, etc.
+ 
+Slides- https://docs.google.com/presentation/d/1CIrNyedOKLXEYH-ns04nNgu-KuRGvxfDLMdd0vp0wE8/edit?usp=sharing
