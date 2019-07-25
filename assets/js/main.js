@@ -272,14 +272,14 @@ $('#services-button').click(function() {
     var location = getUserLocation();
     //call the api with the user specific location 
     var proxyurl = "https://cors-anywhere.herokuapp.com/";
-    var mapsurl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&rankby=distance&fields=name,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs`;
+    var mapsurl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&rankby=distance&fields=name,photo,icon,website,opening_hour,formated_phone-number,formatted_address,rating&type=car_repair&keyword=oil&key=AIzaSyDg7arbjgsAKEij1dEAJONeKoNFX005rbs`;
     $.ajax({
         url: proxyurl + mapsurl,
         method: "GET"
     }).then(function(response) {
         var apiResults = response.results;
         console.log(apiResults);
-        var limitedResults = apiResults.slice(0, 6);
+        var limitedResults = apiResults.slice(0, 5);
         //get the table body and save it a JQuery object
         var servicesTableBody = $('#services-table-body');
         //loop through the result 
@@ -287,13 +287,16 @@ $('#services-button').click(function() {
             places.push({
                 name: result.name,
                 lat: result.geometry.location.lat,
-                lng: result.geometry.location.lng
+                lng: result.geometry.location.lng,
+               
             });
             //create a table row for each result
             var tableRow = `<ul>
-          <li class="serviceRating">${"Ratings: " + result.rating}<br>
-          <span class="serviceName">${result.name}<br>
-          <span class="serviceAddress">${result.vicinity}</span></li>
+          <li>
+          <span class="serviceName">${result.name}</span><br>
+          <span class="serviceRating">${"Ratings: " + result.rating}</span><br>
+          <span class="serviceAddress">${result.vicinity}</span>
+          </li>
          
           </ul>`;
             //add row to table body
@@ -348,19 +351,24 @@ function getUserLocation() {
 function initMap() {
     var location = getUserLocation();
     var map = new google.maps.Map(document.getElementById('map'), { zoom: 12, center: location });
-    var infowindow = new google.maps.InfoWindow({});
+    var infowindow = new google.maps.InfoWindow({
+       
+
+    });
     var marker, index;
     for (var index = 0; index < places.length; index++) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(places[index].lat, places[index].lng),
             map: map,
-            title: places[index].name
+            title: places[index].name,
+            
+            
         });
-        google.maps.event.addListener(marker, 'click', (function(marker, index) {
+        google.maps.event.addListener(marker, 'click', (function(marker) {
             return function() {
-                infowindow.setContent(places[index]);
-                infowindow.open(map, marker);
+                // infowindow.setContent(places[index]);
+                infowindow.open(map);
             }
-        })(marker, index));
+        })(marker));
     }
 }
