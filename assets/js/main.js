@@ -71,7 +71,7 @@ $(window).on('load', function() {
                             //get the left position
                             //  var pushLeft = $('.push').position().left;
                             //set the style and append to head
-                            var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;stroke:green;}to {stroke-dashoffset:0;stroke:rgb(251, 255, 0);}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
+                            var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;stroke:green;}to {stroke-dashoffset:0;stroke:rgb(255, 0, 0);}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
                             //so u don't keep appending style to head
                             KeyFrame.check = true;
                         }
@@ -131,6 +131,8 @@ $("#setVehicleInput").on("click", function() {
     inputCarModel = localStorage.getItem('inputCarModel');
     localStorage.setItem('inputCarMake', inputCarMake);
     inputCarMake = localStorage.getItem('inputCarMake');
+
+    // user input validation
     if (mileage <= lastChange) {
         alert("Your current mileage can't be greater than the mileage of your last oil change...");
         return false;
@@ -146,18 +148,20 @@ $("#setVehicleInput").on("click", function() {
 
     // calculate miles until next oil change, based on the presumption that an oil change is needed every 5000 miles 
     var nextChange = parseInt(lastChange) + parseInt("8000") - parseInt(mileage);
+    console.log("output of calcualte miles until next oil change: " + nextChange);
 
     //set nextChange to local storage and then display above graph
     localStorage.setItem('next-oil-change', nextChange);
     var localNextChange = localStorage.getItem('next-oil-change');
 
-    // generate percent value of progress towards next oil change, take circumfrence of circle, multiply by percentage  (1 - miles until next change divided by 5000)
-    var percentage = 339.292 * parseFloat(1 - (nextChange / 8000));
+    // generate percent value of progress towards next oil change, take circumfrence of circle, multiply by percentage  
+    var percentage =  339.292 * parseFloat(nextChange / 8000);
     console.log(percentage);
 
     // setting percentage to local storage 
     localStorage.setItem('vehicle-mileage-percentage', percentage);
     var localPercentage = localStorage.getItem('vehicle-mileage-percentage');
+    console.log(localPercentage);
     if (localNextChange < 0) {
         $("#mileageOutput").html("Your " + inputCarMake + " " + inputCarModel + " needed an oil change " + -localNextChange + " miles ago!");
         // add percentage value to html element
@@ -179,7 +183,7 @@ $("#setVehicleInput").on("click", function() {
         var KeyFrame = {
                 init: function() {
                     if (!KeyFrame.check) {
-                        var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;stroke:green;}to {stroke-dashoffset:0;stroke:rgb(251, 255, 0);}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
+                        var css = $('<style>@keyframes progress{from {stroke-dashoffset:339.292;stroke:green;}to {stroke-dashoffset:0;stroke:rgb(255, 0, 0);}}</style>').appendTo('head'); //make sure you don't carriage return the css inline statement, or else it'll be error as ILLEGAL
                         //so u don't keep appending style to head
                         KeyFrame.check = true;
                     }
