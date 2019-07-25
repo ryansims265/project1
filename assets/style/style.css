@@ -57,7 +57,7 @@ p {
 }
 
 body {
-    background-image: url(/Users/msheriff/project1/assets/images/blackred2.jpg);
+    background-image: url(assets/images/blackred2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     /* background-color: rgb(204, 204, 204); */
